@@ -164,373 +164,83 @@ editor.on("change",  function() {
     // Default starting schema
     if(!schema) {
         schema = {
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "http://jsonschema.net",
-  "type": "object",
-  "properties": {
-    "conformsTo": {
-      "id": "http://jsonschema.net/conformsTo",
-      "type": "string"
-    },
-    "describedBy": {
-      "id": "http://jsonschema.net/describedBy",
-      "type": "string"
-    },
-    "isPartOf": {
-      "id": "http://jsonschema.net/isPartOf",
-      "type": "null"
-    },
-    "UUID": {
-      "id": "http://jsonschema.net/UUID",
-      "type": "string"
-    },
-    "title": {
-      "id": "http://jsonschema.net/title",
-      "type": "string"
-    },
-    "description": {
-      "id": "http://jsonschema.net/description",
-      "type": "string"
-    },
-    "status": {
-      "id": "http://jsonschema.net/status",
-      "type": "string"
-    },
-    "categories": {
-      "id": "http://jsonschema.net/categories",
-      "type": "string"
-    },
-    "keywords": {
-      "id": "http://jsonschema.net/keywords",
-      "type": "string"
-    },
-    "attribution": {
-      "id": "http://jsonschema.net/attribution",
-      "type": "string"
-    },
-    "accessLevel": {
-      "id": "http://jsonschema.net/accessLevel",
-      "type": "string"
-    },
-    "publisher": {
-      "id": "http://jsonschema.net/publisher",
-      "type": "string"
-    },
-    "publishedURL": {
-      "id": "http://jsonschema.net/publishedURL",
-      "type": "string"
-    },
-    "dateModified": {
-      "id": "http://jsonschema.net/dateModified",
-      "type": "string"
-    },
-    "contacts": {
-      "id": "http://jsonschema.net/contacts",
-      "type": "array",
-      "items": {
-        "id": "http://jsonschema.net/contacts/0",
-        "type": "object",
-        "properties": {
-          "email": {
-            "id": "http://jsonschema.net/contacts/0/email",
-            "type": "string"
-          },
-          "name": {
-            "id": "http://jsonschema.net/contacts/0/name",
-            "type": "string"
-          },
-          "role": {
-            "id": "http://jsonschema.net/contacts/0/role",
-            "type": "string"
-          },
-          "office": {
-            "id": "http://jsonschema.net/contacts/0/office",
-            "type": "string"
-          },
-          "organizationCode": {
-            "id": "http://jsonschema.net/contacts/0/organizationCode",
-            "type": "string"
-          },
-          "description": {
-            "id": "http://jsonschema.net/contacts/0/description",
-            "type": "string"
-          },
-          "contactType": {
-            "id": "http://jsonschema.net/contacts/0/contactType",
-            "type": "string"
-          },
-          "id": {
-            "id": "http://jsonschema.net/contacts/0/id",
-            "type": "string"
-          }
-        }
-      }
-    },
-    "spatial": {
-      "id": "http://jsonschema.net/spatial",
-      "type": "array",
-      "items": {
-        "id": "http://jsonschema.net/spatial/0",
-        "type": "object",
-        "properties": {
-          "name": {
-            "id": "http://jsonschema.net/spatial/0/name",
-            "type": "string"
-          },
-          "geojson": {
-            "id": "http://jsonschema.net/spatial/0/geojson",
-            "type": "string"
-          }
-        }
-      }
-    },
-    "temporal": {
-      "id": "http://jsonschema.net/temporal",
-      "type": "array",
-      "items": {
-        "id": "http://jsonschema.net/temporal/0",
-        "type": "object",
-        "properties": {
-          "name": {
-            "id": "http://jsonschema.net/temporal/0/name",
-            "type": "string"
-          },
-          "type": {
-            "id": "http://jsonschema.net/temporal/0/type",
-            "type": "string"
-          },
-          "from": {
-            "id": "http://jsonschema.net/temporal/0/from",
-            "type": "string"
-          },
-          "to": {
-            "id": "http://jsonschema.net/temporal/0/to",
-            "type": "string"
-          },
-          "contactId": {
-            "id": "http://jsonschema.net/temporal/0/contactId",
-            "type": "string"
-          }
-        }
-      }
-    },
-    "federalData": {
-      "id": "http://jsonschema.net/federalData",
-      "type": "array",
-      "items": {
-        "id": "http://jsonschema.net/federalData/0",
-        "type": "object",
-        "properties": {
-          "uri": {
-            "id": "http://jsonschema.net/federalData/0/uri",
-            "type": "null"
-          },
-          "created": {
-            "id": "http://jsonschema.net/federalData/0/created",
-            "type": "boolean"
-          }
-        }
-      }
-    },
-    "data": {
-      "id": "http://jsonschema.net/data",
-      "type": "array",
-      "items": {
-        "id": "http://jsonschema.net/data/0",
-        "type": "object",
-        "properties": {
-          "name": {
-            "id": "http://jsonschema.net/data/0/name",
-            "type": "null"
-          },
-          "url": {
-            "id": "http://jsonschema.net/data/0/url",
-            "type": "null"
-          },
-          "license": {
-            "id": "http://jsonschema.net/data/0/license",
-            "type": "null"
-          },
-          "attribution": {
-            "id": "http://jsonschema.net/data/0/attribution",
-            "type": "null"
-          },
-          "created": {
-            "id": "http://jsonschema.net/data/0/created",
-            "type": "boolean"
-          }
-        }
-      }
-    },
-    "media": {
-      "id": "http://jsonschema.net/media",
-      "type": "array",
-      "items": {
-        "id": "http://jsonschema.net/media/0",
-        "type": "object",
-        "properties": {
-          "name": {
-            "id": "http://jsonschema.net/media/0/name",
-            "type": "null"
-          },
-          "url": {
-            "id": "http://jsonschema.net/media/0/url",
-            "type": "null"
-          }
-        }
-      }
-    },
-    "socialMedia": {
-      "id": "http://jsonschema.net/socialMedia",
-      "type": "array",
-      "items": {
-        "id": "http://jsonschema.net/socialMedia/0",
-        "type": "object",
-        "properties": {
-          "url": {
-            "id": "http://jsonschema.net/socialMedia/0/url",
-            "type": "null"
-          }
-        }
-      }
-    },
-    "notes": {
-      "id": "http://jsonschema.net/notes",
-      "type": "string"
-    },
-    "resources": {
-      "id": "http://jsonschema.net/resources",
-      "type": "array",
-      "items": {
-        "id": "http://jsonschema.net/resources/0",
-        "type": "object",
-        "properties": {
-          "organizationCode": {
-            "id": "http://jsonschema.net/resources/0/organizationCode",
-            "type": "string"
-          },
-          "portionOf": {
-            "id": "http://jsonschema.net/resources/0/portionOf",
-            "type": "string"
-          },
-          "ofTotal": {
-            "id": "http://jsonschema.net/resources/0/ofTotal",
-            "type": "string"
-          },
-          "investmentType": {
-            "id": "http://jsonschema.net/resources/0/investmentType",
-            "type": "string"
-          },
-          "contactId": {
-            "id": "http://jsonschema.net/resources/0/contactId",
-            "type": "string"
-          }
-        }
-      }
-    },
-    "social": {
-      "id": "http://jsonschema.net/social",
-      "type": "array",
-      "items": {
-        "id": "http://jsonschema.net/social/0",
-        "type": "object",
-        "properties": {
-          "url": {
-            "id": "http://jsonschema.net/social/0/url",
-            "type": "null"
-          }
-        }
-      }
-    },
-    "extended": {
-      "id": "http://jsonschema.net/extended",
-      "type": "array",
-      "items": [
-        {
-          "id": "http://jsonschema.net/extended/0",
-          "type": "object",
-          "properties": {
-            "whatever": {
-              "id": "http://jsonschema.net/extended/0/whatever",
-              "type": "null"
-            },
-            "additional": {
-              "id": "http://jsonschema.net/extended/0/additional",
-              "type": "array",
-              "items": {
-                "id": "http://jsonschema.net/extended/0/additional/0",
-                "type": "object",
-                "properties": {
-                  "attributes": {
-                    "id": "http://jsonschema.net/extended/0/additional/0/attributes",
-                    "type": "array",
-                    "items": {
-                      "id": "http://jsonschema.net/extended/0/additional/0/attributes/0",
-                      "type": "object",
-                      "properties": {
-                        "or": {
-                          "id": "http://jsonschema.net/extended/0/additional/0/attributes/0/or",
-                          "type": "null"
+            title: "Person",
+            type: "object",
+            properties: {
+                name: {
+                    type: "string",
+                    description: "First and Last name",
+                    minLength: 4,
+                    default: "Jeremy Dorn"
+                },
+                age: {
+                    type: "integer",
+                    default: 25,
+                    minimum: 18,
+                    maximum: 99
+                },
+                favorite_color: {
+                    type: "string",
+                    format: "color",
+                    title: "favorite color",
+                    default: "#ffa500"
+                },
+                gender: {
+                    type: "string",
+                    enum: ["male", "female"]
+                },
+                location: {
+                    type: "object",
+                    title: "Location",
+                    properties: {
+                        city: {
+                            type: "string",
+                            default: "San Francisco"
+                        },
+                        state: {
+                            type: "string",
+                            default: "CA"
+                        },
+                        citystate: {
+                            type: "string",
+                            description: "This is generated automatically from the previous two fields",
+                            template: "{{city}}, {{state}}",
+                            watch: {
+                                city: 'location.city',
+                                state: 'location.state'
+                            }
                         }
-                      }
                     }
-                  }
+                },
+                pets: {
+                    type: "array",
+                    format: "table",
+                    title: "Pets",
+                    uniqueItems: true,
+                    items: {
+                        type: "object",
+                        title: "Pet",
+                        properties: {
+                            type: {
+                                type: "string",
+                                enum: ["cat","dog","bird","reptile","other"],
+                                default: "dog"
+                            },
+                            name: {
+                                type: "string"
+                            }
+                        }
+                    },
+                    default: [
+                        {
+                            type: "dog",
+                            name: "Walter"
+                        }
+                    ]
                 }
-              }
             }
-          }
-        },
-        {
-          "id": "http://jsonschema.net/extended/1",
-          "type": "object",
-          "properties": {
-            "fields": {
-              "id": "http://jsonschema.net/extended/1/fields",
-              "type": "null"
-            }
-          }
-        },
-        {
-          "id": "http://jsonschema.net/extended/2",
-          "type": "object",
-          "properties": {
-            "needed": {
-              "id": "http://jsonschema.net/extended/2/needed",
-              "type": "null"
-            }
-          }
         }
-      ]
     }
-  },
-  "required": [
-    "conformsTo",
-    "describedBy",
-    "isPartOf",
-    "UUID",
-    "title",
-    "description",
-    "status",
-    "categories",
-    "keywords",
-    "attribution",
-    "accessLevel",
-    "publisher",
-    "publishedURL",
-    "dateModified",
-    "contacts",
-    "spatial",
-    "temporal",
-    "federalData",
-    "data",
-    "media",
-    "socialMedia",
-    "notes",
-    "resources",
-    "social",
-    "extended"
-  ]
-}
 
     // Divs/textareas on the page
     var $schema = document.getElementById('schema');
@@ -688,23 +398,23 @@ editor.on("change",  function() {
     document.getElementById('boolean_options').addEventListener('change',function() {
         refreshBooleanOptions();
     });
-
+    
     // Get starting value from url
     if(window.location.href.match('[?&]value=([^&]+)')) {
       window.startval = JSON.parse(LZString.decompressFromBase64(window.location.href.match('[?&]value=([^&]+)')[1]));
     }
-
+ 
     // Set options from direct link
     setTheme((window.location.href.match(/[?&]theme=([^&]+)/)||[])[1] || 'bootstrap2', true);
-
+    
     setIconlib((window.location.href.match(/[?&]iconlib=([^&]*)/)||[null,'fontawesome4'])[1], true);
-
+    
     document.getElementById('object_layout').value = (window.location.href.match(/[?&]object_layout=([^&]+)/)||[])[1] || 'normal';
     JSONEditor.defaults.options.object_layout = document.getElementById('object_layout').value;
-
+    
     document.getElementById('show_errors').value = (window.location.href.match(/[?&]show_errors=([^&]+)/)||[])[1] || 'interaction';
     JSONEditor.defaults.options.show_errors = document.getElementById('show_errors').value;
-
+    
     var boolean_options = document.getElementById('boolean_options').children;
     for(var i=0; i<boolean_options.length; i++) {
         if(window.location.href.match(new RegExp('[?&]'+boolean_options[i].getAttribute('value')+'([&=]|$)'))) {
@@ -712,7 +422,7 @@ editor.on("change",  function() {
         }
     }
     refreshBooleanOptions(true);
-
+    
     reload();
 })();
 </script>
