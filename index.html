@@ -206,8 +206,8 @@ editor.on("change",  function() {
                 },
                 accessLevel: {
                     type: "string",
-                    enum: ["public", "restricted", "non-public"]
-                    description: "Access Level",
+                    enum: ["public", "restricted", "non-public"],
+                    description: "Access Level"
                 },
                 publisher: {
                     type: "string",
@@ -218,7 +218,7 @@ editor.on("change",  function() {
                 publishedURL: {
                     type: "string",
                     description: "link to the project website or page from publisher",
-                    minLength: 4,
+                    minLength: 4
                 },
                 contacts: {
                     type: "array",
@@ -230,12 +230,12 @@ editor.on("change",  function() {
                         title: "role",
                         properties: {
                             email: {
-                                type: "string"
+                                type: "string",
                                 title: "Email"
                             },
                             name: {
-                                type: "string"
-                                title: "Name",
+                                type: "string",
+                                title: "Name"
                             },
                             role: {
                                 type: "string",
@@ -244,19 +244,19 @@ editor.on("change",  function() {
                                 default: "swappable lists"
                             },
                             office: {
-                                type: "string"
-                                title: "Office",
+                                type: "string",
+                                title: "Office"
                             },
                             description: {
-                                type: "string"
-                                title: "Description",
+                                type: "string",
+                                title: "Description"
                             },
                             contactType: {
                                 type: "string",
                                 title: "Role",
                                 enum: ["random","words","random","options","agaisnt","swappable lists"],
                                 default: "swappable lists"
-                            },
+                            }
                         }
                     }
                 },
@@ -270,11 +270,11 @@ editor.on("change",  function() {
                         title: "role",
                         properties: {
                             name: {
-                                type: "string"
+                                type: "string",
                                 title: "Name"
                             },
                             geojson: {
-                                type: "string"
+                                type: "string",
                                 title: "Geojson"
                             }
                         }
@@ -291,7 +291,7 @@ editor.on("change",  function() {
                         title: "role",
                         properties: {
                             name: {
-                                type: "string"
+                                type: "string",
                                 title: "Name"
                             },
                             milestoneType: {
@@ -301,7 +301,7 @@ editor.on("change",  function() {
                                 default: "swappable lists"
                             },
                             description: {
-                                type: "string"
+                                type: "string",
                                 title: "Description"
                             }
                         }
