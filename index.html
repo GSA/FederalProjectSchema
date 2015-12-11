@@ -219,7 +219,7 @@ editor.on("change",  function() {
                     enum: ["public", "restricted", "non-public"]
                 },
                 publisher: {
-                    title: "Publisher",
+                    title: "Project URL",
                     description: "Organization Name hosting the Project",
                     type: "string",
                     minLength: 4,
@@ -252,8 +252,8 @@ editor.on("change",  function() {
                             role: {
                                 type: "string",
                                 title: "Role",
-                                enum: ["random","words","random","options","agaisnt","swappable lists"],
-                                default: "swappable lists"
+                                enum: ["Project Lead","Communications Lead","etc","etc"],
+                                default: "Project Lead"
                             },
                             office: {
                                 type: "string",
@@ -265,9 +265,9 @@ editor.on("change",  function() {
                             },
                             contactType: {
                                 type: "string",
-                                title: "Role",
-                                enum: ["random","words","random","options","agaisnt","swappable lists"],
-                                default: "swappable lists"
+                                title: "Contact Type",
+                                enum: ["Project Team","Cooperating Agency","Consulting Agency","Contributor","Stakeholder","External Party"],
+                                default: "Project Lead"
                             }
                         }
                     }
@@ -340,6 +340,224 @@ editor.on("change",  function() {
                                 type: "string",
                                 title: "Contact",
                                 description: "Name@email.gov for person @email.gov for org"
+                            }
+                        }
+                    }
+                },
+                media: {
+                    type: "array",
+                    format: "table",
+                    title: "Media",
+                    description: "Project Websites, Images",
+                    uniqueItems: true,
+                    items: {
+                        type: "object",
+                        title: "Contact",
+                        properties: {
+                            name: {
+                                type: "string",
+                                title: "Name"
+                            },
+                            url: {
+                                type: "string",
+                                title: "URL",
+                                description: "Link to Site or File"
+                            },
+                            mediaType: {
+                                type: "string",
+                                title: "Media Type",
+                                description: "File or Format",
+                                enum: ["random","words","random","options","agaisnt","swappable lists"],
+                                default: "swappable lists"
+                            },
+                            attribution: {
+                                type: "string",
+                                title: "Attribution",
+                                description: "Attribution Credits Rights"
+                            }
+                        }
+                    }
+                },
+                socialMedia: {
+                    type: "array",
+                    format: "table",
+                    title: "Social Media",
+                    description: "Social Media, Feeds, Communication Channels",
+                    uniqueItems: true,
+                    items: {
+                        type: "object",
+                        title: "Social Media",
+                        properties: {
+                            url: {
+                                type: "string",
+                                title: "URL",
+                                description: "Direct Link to Source or Landing Page"
+                            },
+                            socialmediaType: {
+                                type: "string",
+                                title: "Social Media Type",
+                                enum: ["Project Website","Blog","Service","Feed","News","Mailing List","Shared Email"],
+                                default: "swappable lists"
+                            }
+                        }
+                    }
+                },
+                resources: {
+                    type: "array",
+                    format: "table",
+                    title: "Resources",
+                    description: "OPTIONAL FIELD for internal tracking",
+                    uniqueItems: true,
+                    items: {
+                        type: "object",
+                        title: "Contact",
+                        properties: {
+                            email: {
+                                type: "string",
+                                title: "Email",
+                                description: "Use name@email.gov for responsible POC or @email.gov for organization"
+                            },
+                            portionOf: {
+                                type: "string",
+                                title: "Portion of",
+                                description: "$ or %",
+                            },
+                            ofTotal: {
+                                type: "string",
+                                title: "of Total",
+                                description: "$ or %",
+                                enum: ["random","words","random","options","agaisnt","swappable lists"],
+                                default: "swappable lists"
+                            },
+                            resourceType: {
+                                type: "string",
+                                title: "Resource Type",
+                                description: "List of Vetting Categories",
+                                enum: ["random","words","random","options","agaisnt","swappable lists"],
+                                default: "swappable lists"
+                            },
+                            description: {
+                                type: "string",
+                                title: "Description"
+                            }
+                        }
+                    }
+                },
+                federalData: {
+                    type: "array",
+                    format: "table",
+                    title: "Federal Data",
+                    description: "Link to Federal Dataset on Data.gov",
+                    uniqueItems: true,
+                    items: {
+                        type: "object",
+                        title: "Federal Data Source",
+                        properties: {
+                            uri: {
+                                type: "string",
+                                title: "URI to Data.gov",
+                                description: "Permenant Link to Dataset on Data.gov"
+                            },
+                            created: {
+                                type: "boolean",
+                                title: "Created",
+                                description: "Data Created or Produced from Project"
+                            }
+                        }
+                    }
+                },
+                data: {
+                    type: "array",
+                    format: "table",
+                    title: "Contacts",
+                    description: "Project Team and Contributors",
+                    uniqueItems: true,
+                    items: {
+                        type: "object",
+                        title: "Contact",
+                        properties: {
+                            name: {
+                                type: "string",
+                                title: "Email"
+                            },
+                            url: {
+                                type: "string",
+                                title: "Name"
+                            },
+                            license: {
+                                type: "string",
+                                title: "Role",
+                                enum: ["Public Domain CC0","Other","Licenses"],
+                                default: "Public Domain CC0"
+                            },
+                            attribution: {
+                                type: "string",
+                                title: "Office",
+                                description: "Attribution Credits Rights"
+                            },
+                            created: {
+                                type: "boolean",
+                                title: "Created",
+                                description: "Data Created or Produced from Project"
+                            }
+                        }
+                    }
+                },
+                isPartof: {
+                    type: "array",
+                    format: "table",
+                    title: "Collections or Related Projects",
+                    description: "isPartof implies current project is a smaller/subset to a larger project or effort uses UUID",
+                    uniqueItems: true,
+                    items: {
+                        type: "object",
+                        title: "Parent Project UUID",
+                        properties: {
+                            additional: {
+                                type: "string",
+                                title: "UUID",
+                                description: "isPartof implies current project is a smaller/subset to a larger project or effort uses UUID"
+                            }
+                        }
+                    }
+                },
+                conformsTo: {
+                    title: "Schema",
+                    description: "Human readable documentation on schema does not yet exist - only provided as an example",
+                    type: "string",
+                    default: "https://some.website/projects/1.0/schema"
+                },
+                describedBy: {
+                    title: "Extended Schema",
+                    description: "Extended Schema that confomsTo overall Projects Schema but may supplement",
+                    type: "string",
+                    default: "https://some.website/projects/category/v1.0/schema.json"
+                },
+                UUID: {
+                    title: "UUID",
+                    description: "UUID are Globally Unique ID used to ensure stablity in referencing and identification of Projects",
+                    type: "string",
+                    default: "de305d54-75b4-431b-adb2-eb6b9e546014"
+                },
+                extended: {
+                    type: "array",
+                    format: "table",
+                    title: "Extended",
+                    description: "Custom Fields must be defined in describedBy Schema",
+                    uniqueItems: true,
+                    items: {
+                        type: "object",
+                        title: "Extended",
+                        properties: {
+                            additional: {
+                                type: "string",
+                                title: "Additional",
+                                description: "example 1"
+                            },
+                            fields: {
+                                type: "string",
+                                title: "Fields",
+                                description: "example 2"
                             }
                         }
                     }
