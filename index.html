@@ -239,7 +239,7 @@ editor.on("change",  function() {
                     uniqueItems: true,
                     items: {
                         type: "object",
-                        title: "Role",
+                        title: "Contact",
                         properties: {
                             email: {
                                 type: "string",
@@ -279,7 +279,7 @@ editor.on("change",  function() {
                     uniqueItems: true,
                     items: {
                         type: "object",
-                        title: "role",
+                        title: "Spatial",
                         properties: {
                             name: {
                                 type: "string",
@@ -288,29 +288,6 @@ editor.on("change",  function() {
                             geojson: {
                                 type: "string",
                                 title: "Geojson"
-                            },
-                            coordinates: {
-                                type: "object",
-                                title: "Location",
-                                properties: {
-                                    lat: {
-                                        type: "string",
-                                        title: "Lattitude",
-                                        description: "WGS 84"
-                                    },
-                                    long: {
-                                      type: "string",
-                                      title: "Longitude"
-                                    },
-                                    latlong: {
-                                      type: "string",
-                                      description: "This is generated automatically from the previous two fields",
-                                      template: "{{lat}}, {{long}}",
-                                      watch: {
-                                        city: 'location.city',
-                                        state: 'location.state'
-                                    }
-                                }
                             }
                         }
                     }
