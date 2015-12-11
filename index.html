@@ -187,8 +187,7 @@ editor.on("change",  function() {
                     title: "Status",
                     description: "Phase or Stage of a Project",
                     type: "string",
-                    enum: ["random","words","random","options","agaisnt","swappable list"],
-                    minLength: 4,
+                    enum: ["discovery", "alpha", "beta", "live", "sunset", "transfer", "end"],
                     default: "swappable list"
                 },
                 categories: {
@@ -196,19 +195,17 @@ editor.on("change",  function() {
                     description: "validate agaisnt a list of options",
                     type: "string",
                     enum: ["random","words","random","options","agaisnt","swappable list"],
-                    minLength: 4,
                     default: "swappable list"
                 },
                 keywords: {
                     title: "Keywords",
-                    description: "Keywords",
+                    description: "Comma, Seperated, Values",
                     type: "string",
-                    minLength: 4,
-                    default: ""
+                    default: "1, 2, 3"
                 },
                 attribution: {
                     title: "Attribution",
-                    description: "Attribution Credits Rights",
+                    description: "Attribution, Credits, Rights",
                     type: "string",
                     default: ""
                 },
@@ -220,14 +217,14 @@ editor.on("change",  function() {
                 },
                 publisher: {
                     title: "Project URL",
-                    description: "Organization Name hosting the Project",
+                    description: "Organization hosting the Project",
                     type: "string",
                     minLength: 4,
                     default: "Organization Name"
                 },
                 publishedURL: {
                     title: "Publisher",
-                    description: "link to the project website or page from publisher",
+                    description: "Link to the project website or page from the source Publisher",
                     type: "string",
                     minLength: 4
                 },
@@ -288,6 +285,16 @@ editor.on("change",  function() {
                             geojson: {
                                 type: "string",
                                 title: "Geojson"
+                            },
+                            lat: {
+                                type: "string",
+                                title: "Latitude",
+                                description: "WGS 84"
+                            },
+                            long: {
+                                type: "string",
+                                title: "Longitude",
+                                description: "WGS 84"
                             }
                         }
                     }
@@ -308,7 +315,7 @@ editor.on("change",  function() {
                             },
                             milestoneType: {
                                 type: "string",
-                                title: "Role",
+                                title: "Milestone Type",
                                 enum: ["random","words","random","options","agaisnt","swappable lists"],
                                 default: "swappable lists"
                             },
