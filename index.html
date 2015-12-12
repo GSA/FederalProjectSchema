@@ -264,7 +264,7 @@ editor.on("change",  function() {
                                 type: "string",
                                 title: "Contact Type",
                                 enum: ["Project Team","Cooperating Agency","Consulting Agency","Contributor","Stakeholder","External Party"],
-                                default: "Project Lead"
+                                default: "Project Team"
                             }
                         }
                     }
@@ -417,7 +417,7 @@ editor.on("change",  function() {
                     uniqueItems: true,
                     items: {
                         type: "object",
-                        title: "Contact",
+                        title: "Resources",
                         properties: {
                             email: {
                                 type: "string",
@@ -433,7 +433,6 @@ editor.on("change",  function() {
                                 type: "string",
                                 title: "of Total",
                                 description: "$ or %",
-                                enum: ["random","words","random","options","agaisnt","swappable lists"],
                                 default: "swappable lists"
                             },
                             resourceType: {
@@ -476,12 +475,12 @@ editor.on("change",  function() {
                 data: {
                     type: "array",
                     format: "table",
-                    title: "Contacts",
+                    title: "Data",
                     description: "Project Team and Contributors",
                     uniqueItems: true,
                     items: {
                         type: "object",
-                        title: "Contact",
+                        title: "Data",
                         properties: {
                             name: {
                                 type: "string",
