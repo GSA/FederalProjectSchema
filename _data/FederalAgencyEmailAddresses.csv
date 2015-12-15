@@ -1,0 +1,243 @@
+contactType,Federal Agency,Sub Agency,unique id,is_cfo
+Federal Organization,Department of Commerce,National Institute of Standards and Technology,nist.gov,Y
+Federal Organization,Department of Justice,Office of Legal Counsel,olc.usdoj.gov,Y
+Federal Organization,Department of State,,state.gov,Y
+Federal Organization,Department of Justice,Bureau of Justice Statistics,bjs.usdoj.gov,Y
+Federal Organization,Department of the Treasury,Departmental Offices,do.treas.gov,Y
+Federal Organization,Department of the Interior,Federal Geographic Data Committee,fgdc.gov,Y
+Federal Organization,Information Sharing Environment,,ise.gov ,N
+Federal Organization,Department of Health and Human Services,National Institute on Drug Abuse,nlm.nih.gov,Y
+Federal Organization,Executive Office of the President,Office of Management and Budget,omb.eop.gov,N
+Federal Organization,Department of Transportation,Surface Transportation Board,stb.dot.gov,Y
+Federal Organization,Department of the Interior,Bureau of Land Management,blm.gov,Y
+Federal Organization,Department of Commerce,,doc.gov,Y
+Federal Organization,Department of Transportation,Federal Highway Administration,fha.dot.gov,Y
+Federal Organization,Department of Transportation,Maritime Administration,ma.dot.gov,Y
+Federal Organization,National Labor Relations Board,,nlrb.gov,N
+Federal Organization,Executive Office of the President,Office of National Drug Control Policy,ondcp.eop.gov,N
+Federal Organization,Department of Agriculture,Rural Development,stl.usda.gov,Y
+Federal Organization,Department of Labor,Bureau of Labor Statistics,bls.gov,Y
+Federal Organization,Department of Defense,,dod.gov,Y
+Federal Organization,Federal Housing Finance Agency,,fhfa.gov,N
+Federal Organization,Department of Commerce,Minority Business Development Agency,mbda.doc.gov,N
+Federal Organization,Millenium Challenge Corporation,,mcc.gov,N
+Federal Organization,Department of Commerce,National Oceanic and Atmospheric Administration,noaa.gov,Y
+Federal Organization,Office of Navajo and Hopi Indian Relocation,,onhir.gov,N
+Federal Organization,Department of Commerce,International Trade Administration,trade.gov,Y
+Federal Organization,Department of the Interior,Bureau of Ocean Energy Management,boem.gov,Y
+Federal Organization,Department of Energy,,doe.gov,Y
+Federal Organization,Department of the Treasury,Financial Crimes Enforcement Network,fincen.gov,Y
+Federal Organization,Department of the Treasury,United States Mint,mint.treas.gov,Y
+Federal Organization,Department of the Interior,National Park Service,nps.gov,Y
+Federal Organization,Department of Education,Office of Postsecondary Education,ope.ed.gov,Y
+Federal Organization,Department of the Treasury,,treasury.gov,Y
+Federal Organization,Department of Justice,Bureau of Prison,bop.doj.gov,Y
+Federal Organization,Department of the Interior,,doi.gov,Y
+Federal Organization,Federal Labor Relations Authority,,flra.gov,N
+Federal Organization,Department of Labor,Mine Safety and Health Administration,msha.dol.gov,Y
+Federal Organization,Nuclear Regulatory Commission,,nrc.gov,Y
+Federal Organization,General Services Administration,Office of Performance Improvement,opi.gsa.gov,Y
+Federal Organization,Department of the Treasury,The Alcohol and Tobacco Tax and Trade Bureau,ttb.treas.gov,Y
+Federal Organization,Department of the Treasury,Bureau of the Public Debt,bpd.treas.gov,Y
+Federal Organization,Department of Justice,,doj.gov,Y
+Federal Organization,Federal Maritime Commission,,fmc.gov,N
+Federal Organization,Merit Systems Protection Board,,mspb.gov,N
+Federal Organization,Department of Agriculture,Natural Resources Conservation Service,nrcs.usda.gov,Y
+Federal Organization,Overseas Private Investment Corporation,,opic.gov,N
+Federal Organization,Tennessee Valley Authority,,tva.gov,N
+Federal Organization,Department of Labor,Benefits Review Board,brb.dol.gov,Y
+Federal Organization,Department of Labor,,dol.gov,Y
+Federal Organization,Department of Transportation,Federal Motor Carrier Safety Administration,fmcsa.dot.gov,Y
+Federal Organization,Department of the Treasury,Financial Management Service,fms.treas.gov,Y
+Federal Organization,National Archives and Records Administration,,nara.gov,Y
+Federal Organization,National Science Foundation,,nsf.gov,Y
+Federal Organization,Office of Personnel Management,,opm.gov,Y
+Federal Organization,Department of the Interior,US Geological Survey,brd.usgs.gov,N
+Federal Organization,Department of Transportation,Bureau of Transportation Statistics,bts.dot.gov,Y
+Federal Organization,Department of Transportation,,dot.gov,Y
+Federal Organization,Federal Mine Safety and Health Review Commission,,fmshrc.gov,N
+Federal Organization,National Aeronautics and Space Administration,,nasa.gov,Y
+Federal Organization,Department of Commerce,National Telecommunication and Information Administration,ntia.doc.gov,Y
+Federal Organization,Department of the Interior,Office of the Solicitor,os.doi.gov,Y
+Federal Organization,Department of the Interior,US Geological Survey,wrd.usgs.gov,N
+Federal Organization,National Aeronautics and Space Administration,Jet Propulsion Laboratory,jpl.nasa.gov,Y
+Federal Organization,Department of Defense,Defense Technical Information Center,dtic.mil,Y
+Federal Organization,Department of Agriculture,Food and Nutrition Service,fns.usda.gov,Y
+Federal Organization,Department of Agriculture,National Agricultural Statistics Service,nass.usda.gov,Y
+Federal Organization,Department of Commerce,National Technical Information Service,ntis.gov,Y
+Federal Organization,US Office of the Special Counsel,,osc.gov,N
+Federal Organization,Department of the Interior,Office of Surface Mining,osmre.gov,N
+Federal Organization,Christopher Columbus Fellowship Foundation,,ccff.gov,N
+Federal Organization,Election Assistance Commission,,eac.gov,N
+Federal Organization,Department of Labor,Employees' Compensation Appeals Board,ecab.dol.gov,Y
+Federal Organization,Department of Transportation,Federal Railroad Administration,fra.dot.gov,Y
+Federal Organization,Department of Commerce,National Oceanic and Atmospheric Administration,ncdc.noaa.gov,N
+Federal Organization,National Transportation Safety Board,,ntsb.gov,N
+Federal Organization,Department of Education,Office of Special Education and Rehabilitative Services,osers.ed.gov,Y
+Federal Organization,Department of Defense,Department of the Army,us.army.mil,Y
+Federal Organization,Department of Health and Human Services,Centers for Disease Control and Prevention,cdc.hhs.gov,Y
+Federal Organization,Department of Education,,ed.gov,Y
+Federal Organization,Federal Reserve Board,,frb.gov,N
+Federal Organization,Department of Commerce,National Oceanic and Atmospheric Administration,ncddc.noaa.gov,N
+Federal Organization,Department of Commerce,National Weather Service,nws.doc.gov,Y
+Federal Organization,Department of Labor,Occupational Safety and Health Administration,osha.dol.gov,Y
+Federal Organization,US Agency for International Development,,usaid.gov,Y
+Federal Organization,Department of Commerce,US Census Bureau,census.gov,Y
+Federal Organization,Department of Commerce,Economic Development Administration,eda.doc.gov,N
+Federal Organization,Department of Agriculture,US Forest Service,fs.fed.us,Y
+Federal Organization,Department of Commerce,National Oceanic and Atmospheric Administration,ngs.noaa.gov,N
+Federal Organization,Department of Labor,Office of Administrative Law Judges,oalj.dol.gov,Y
+Federal Organization,Occupational Safety and Health Review Commission,,oshrc.gov,N
+Federal Organization,Department of Justice,US Attorney's Office,usao.usdoj.gov,Y
+Federal Organization,American Battle Monuments Commission,,abmc.gov,N
+Federal Organization,Executive Office of the President,Council on Environmental Quality,ceq.eop.gov,N
+Federal Organization,US Equal Employment Opportunity Commission,,eeoc.gov,N
+Federal Organization,Department of Education,Federal Student Aid,fsa.ed.gov,Y
+Federal Organization,Department of Commerce,National Oceanic and Atmospheric Administration,ngdc.noaa.gov,N
+Federal Organization,Department of Labor,Office of the Assistant Secretary for Policy,oasp.dol.gov,Y
+Federal Organization,Department of the Interior,Office of Surface Mining,osm.doi.gov,Y
+Federal Organization,Department of the Interior,US Bureau of Reclamation,usbr.gov,Y
+Federal Organization,Department of Health and Human Services,Administration for Children and Families,acf.hhs.gov,Y
+Federal Organization,Consumer Financial Protection Bureau,,cfpb.gov,N
+Federal Organization,Commodity Futures Trading Commission,,cftc.gov,N
+Federal Organization,Department of Energy,Energy Information Administration,eia.doe.gov,Y
+Federal Organization,Department of Agriculture,Farm Service Agency,fsa.usda.gov,Y
+Federal Organization,Department of Agriculture,Natural Resources Conservation Service,ftw.usda.gov,N
+Federal Organization,Department of the Treasury,Office of the Comptroller of the Currency,occ.treas.gov,Y
+Federal Organization,Department of Transportation,Office of the Secretary of Transportation,ost.dot.gov,Y
+Federal Organization,Department of Homeland Security,United States Coast Guard,uscg.mil,Y
+Federal Organization,Department of Justice,Civil Division,civ.usdoj.gov,Y
+Federal Organization,Department of Justice,Executive Office for Immigration Review,eoir.doj.gov,Y
+Federal Organization,Department of Agriculture,Food Safety and Inspection Service,fsis.usda.gov,Y
+Federal Organization,Department of the Interior,US Geological Survey,ngp.usgs.gov,N
+Federal Organization,Department of Agriculture,Office of the Chief Economist,oce.usda.gov,Y
+Federal Organization,Department of Energy,Office of Scientific and Technical Information,osti.gov,Y
+Federal Organization,Department of Homeland Security,U.S. Citizenship and Immigration Services,uscis.dhs.gov,Y
+Federal Organization,Department of Health and Human Services,Agency for Healthcare Research and Quality,ahrq.hhs.gov,Y
+Federal Organization,Department of Justice,Criminal Justice Information Services,cjis.doj.gov,Y
+Federal Organization,Environmental Protection Agency,,epa.gov,Y
+Federal Organization,Department of Transportation,Federal Transit Administration,fta.dot.gov,Y
+Federal Organization,Department of Commerce,National Oceanic and Atmospheric Administration,nos.noaa.gov,N
+Federal Organization,General Services Administration,Office of the Chief Financial Officer,ocfo.gsa.gov,Y
+Federal Organization,Executive Office of the President,Office of Science and Technology Policy,ostp.eop.gov,N
+Federal Organization,Department of Agriculture,,usda.gov,Y
+Federal Organization,Department of Agriculture,Agricultural Marketing Service,ams.usda.gov,Y
+Federal Organization,Department of Health and Human Services,Centers for Medicare and Medicaid Services,cms.hhs.gov,Y
+Federal Organization,Department of Agriculture,Economic Research Service,ers.usda.gov,Y
+Federal Organization,Federal Trade Commission,,ftc.gov,N
+Federal Organization,Department of Health and Human Services,Health Resources and Services Administration,npdb.hrsa.gov,N
+Federal Organization,Department of Agriculture,Office of the Chief Information Officer,ocio.usda.gov,Y
+Federal Organization,Department of Education,Office of Vocational and Adult Education,ovae.ed.gov,Y
+Federal Organization,Department of the Interior,U.S. Geological Survey,usgs.gov,Y
+Federal Organization,Department of Health and Human Services,Administration on Aging,aoa.hhs.gov,Y
+Federal Organization,Department of Agriculture,Animal and Plant Health Inspection Service,aphis.usda.gov,Y
+Federal Organization,Corporation for National and Community Service,,cns.gov,N
+Federal Organization,Department of Labor,Employee Benefits Security Administration,esba.dol.gov,Y
+Federal Organization,Department of Defense,Federal Voting Assistance Program,fvap.gov,Y
+Federal Organization,Department of Agriculture,Natural Resources Conservation Service,ncss.usda.gov,N
+Federal Organization,Department of Education,Office for Civil Rights,ocr.ed.gov,Y
+Federal Organization,Pension Benefit Guaranty Corporation,,pbgc.gov,N
+Federal Organization,US Institute of Peace,,usip.org,N
+Federal Organization,Department of the Interior,US Fish and Wildlife Service,alcc.fws.gov,Y
+Federal Organization,Department of Justice,Community Oriented Policing Services,cops.doj.gov,Y
+Federal Organization,Department of Labor,Employment and Training Administration,eta.dol.gov,Y
+Federal Organization,Department of the Interior,US Fish and Wildlife Service,fws.gov,Y
+Federal Organization,Department of Defense,Department of the Navy,nrlssc.navy.mil,Y
+Federal Organization,General Services Administration,Office of Citizen Services and Innovative Technologies,ocsit.gsa.gov,Y
+Federal Organization,General Services Administration,Public Buildings Service,pbs.gsa.gov,Y
+Federal Organization,US International Trade Commission,,usitc.gov,N
+Federal Organization,Department of Defense,Department of the Army,usace.army.mil,Y
+Federal Organization,Department of the Interior,US Geological Survey,csas.usgs.gov,N
+Federal Organization,,,eop.gov,N
+Federal Organization,Department of Agriculture,"Grain Inspection, Packers, and Stockyard Administration",gipsa.usda.gov,Y
+Federal Organization,Department of the Interior,National Business Center,nbc.doi.gov,Y
+Federal Organization,Department of State,Organisation for Economic Cooperation and Development,oecd.state.gov,Y
+Federal Organization,Department of Veterans Affairs,Veterans Benefits Administration,pai.va.gov,Y
+Federal Organization,Department of Commerce,US Patent and Trademark Office,uspto.gov,Y
+Federal Organization,US Trade and Development Agency,,ustda.gov,N
+Federal Organization,Department of Defense,Department of the Army,arng.arm.mil,N
+Federal Organization,General Services Administration,Office of the Chief People Officer,cpo.gsa.gov,Y
+Federal Organization,Export-Import Bank of the US,,exim.gov,N
+Federal Organization,National Archives and Records Administration,Office of the Federal Register,gpo.gov,Y
+Federal Organization,Department of Veterans Affairs,National Cemetery Administration,nca.va.gov,Y
+Federal Organization,Department of the Interior,,ios.doi.gov,N
+Federal Organization,Department of Transportation,Pipeline and Hazardous Materials Safety Administration,phmsa.dot.gov,Y
+Federal Organization,Department of Justice,US Trustee Program,ustp.usdoj.gov,Y
+Federal Organization,Department of Agriculture,Agricultural Research Service,ars.usda.gov,Y
+Federal Organization,US Consumer Product Safety Commission,,cpsc.gov,N
+Federal Organization,Department of Transportation,Federal Aviation Administration,faa.dot.gov,Y
+Federal Organization,General Services Administration,,gsa.gov,Y
+Federal Organization,Department of Education,National Center for Education Statistics,nces.ed.gov,Y
+Federal Organization,Department of Defense,,osd.mil,Y
+Federal Organization,Department of Transportation,Research and Innovative Technology Administration,rita.dot.gov,Y
+Federal Organization,Executive Office of the President,US Trade Representative,ustr.eop.gov,N
+Federal Organization,Department of Agriculture,Office of Assistant Secretary for Civil Rights,ascr.usda.gov,Y
+Federal Organization,Department of Justice,Civil Rights Division,crt.usdoj.gov,Y
+Federal Organization,General Services Administration,Federal Acquisition Service,fas.gsa.gov,Y
+Federal Organization,Department of Health and Human Services,,hhs.gov,Y
+Federal Organization,National Capital Planning Commission,,ncpc.gov,N
+Federal Organization,Office of Government Ethics,,oge.gov,N
+Federal Organization,Department of Agriculture,Risk Management Agency,rma.usda.gov,Y
+Federal Organization,Department of Defense,US Army Corps of Engineers,rid.usace.army.mil,N
+Federal Organization,Department of Veterans Affairs,,va.gov,Y
+Federal Organization,Department of Defense,Acquisition Technology and Logistics,atl.dod.gov,Y
+Federal Organization,Chemical Safety Board,,csb.gov,N
+Federal Organization,Department of Agriculture,Foreign Agricultural Service,fas.usda.gov,Y
+Federal Organization,Department of Health and Human Services,Health Resources and Services Administration,hrsa.gov,Y
+Federal Organization,Department of Agriculture,National Appeals Division,nda.usda.gov,Y
+Federal Organization,General Services Administration,Office of Governmentwide Policy,ogp.gsa.gov,Y
+Federal Organization,Railroad Retirement Board,,rrb.gov,N
+Federal Organization,Department of Veterans Affairs,Veterans Benefits Administration,vba.va.gov,Y
+Federal Organization,Department of Justice,Antitrust Division,atr.usdoj.gov,Y
+Federal Organization,Court Services and Offender Supervision Agency,,csosa.gov,N
+Federal Organization,Farm Credit Administration,,fca.gov,N
+Federal Organization,Department of Housing and Urban Development,,hud.gov,Y
+Federal Organization,National Endowment for the Arts,,nea.gov,N
+Federal Organization,Department of Housing and Urban Development,Office of Housing,oh.hud.gov,Y
+Federal Organization,Department of Health and Human Services,Substance Abuse and Mental Health Services Administration,samhsa.hhs.gov,Y
+Federal Organization,Department of Labor,Veterans Employment and Training Service,vets.dol.gov ,Y
+Federal Organization,Broadcasting Board of Governors,,bbg.gov,N
+Federal Organization,Department of the Interior,National Park Service,crgis.nps.gov,N
+Federal Organization,Federal Communications Commission,,fcc.gov,N
+Federal Organization,Department of Justice,Federal Bureau of Investigation,ic.fbi.gov,Y
+Federal Organization,National Endowment for the Humanities,,neh.gov,N
+Federal Organization,Department of Homeland Security,Office of Health Affairs,oha.dhs.gov,Y
+Federal Organization,Small Business Administration,,sba.gov,Y
+Federal Organization,Department of Veterans Affairs,Veterans Health Administration,vha.va.gov,Y
+Federal Organization,Department of Commerce,Bureau of Economic Analysis,bea.gov,Y
+Federal Organization,General Services Administration,Office of Citizen Services and Innovative Technologies,gsa.gov,N
+Federal Organization,Department of Health and Human Services,US Food and Drug Administration,fda.hhs.gov,Y
+Federal Organization,Department of Education,Institute of Education Sciences,ies.ed.gov,Y
+Federal Organization,Department of Defense,National Geospatial-Intelligence Agency,nga.mil,Y
+Federal Organization,Department of the Interior,Office of Hearings and Appeals,oha.doi.gov,Y
+Federal Organization,Department of Education,Office of Hearings and Appeals,oha.ed.gov,Y
+Federal Organization,Securities and Exchange Commission,,sec.gov,N
+Federal Organization,Executive Office of the President,White House,wh.eop.gov,N
+Federal Organization,Department of the Treasury,Bureau of Engraving and Printing,bep.gov,Y
+Federal Organization,Department of Homeland Security,,dhs.gov,Y
+Federal Organization,Federal Deposit Insurance Corporation,,fdic.gov,N
+Federal Organization,Department of Health and Human Services,Indian Health Services,ihs.hhs.gov,Y
+Federal Organization,Department of Transportation,National Highway Traffice Safety Administration,nhtsa.dot.gov,Y
+Federal Organization,Department of Education,Office of Innovation and Improvement,oii.ed.gov,Y
+Federal Organization,Department of Transportation,Saint Lawrence Seaway Development Corporation,slsdc.dot.gov,Y
+Federal Organization,Department of Labor,Wage and Hour Division,whd.dol.gov,Y
+Federal Organization,Department of Justice,Board of Immigration Appeals,bia.doj.gov,Y
+Federal Organization,Department of Defense,Defense Logistics Agency,dla.mil,Y
+Federal Organization,Federal Election Commission,,fec.gov,N
+Federal Organization,Institute of Museum and Library Services,,imls.gov,N
+Federal Organization,Department of Agriculture,National Institute of Food and Agriculture,nifa.usda.gov,Y
+Federal Organization,Department of Homeland Security,Office of Immigration Statistics,ois.dhs.gov,Y
+Federal Organization,Social Security Administration,,ssa.gov,Y
+Federal Organization,Department of Defense,National Geospatial-Intelligence Agency,wwhgd.nga.org,Y
+Federal Organization,Department of the Interior,Bureau of Indian Education,bie.doi.gov,Y
+Federal Organization,Department of Agriculture,Departmental Management,dm.usda.gov,Y
+Federal Organization,Department of Homeland Security,Federal Emergency Management Agency,fema.gov,Y
+Federal Organization,Environmental Protection Agency,,epa.gov,N
+Federal Organization,National Indian Gaming Commission,,nigc.gov,N
+Federal Organization,Department of Labor,Office of Job Corps,ojc.dol.gov,Y
+Federal Organization,Selective Service System,,sss.gov,N
+Federal Organization,Department of Commerce,Bureau of Industry and Security,bis.doc.gov,Y
+Federal Organization,Director of National Intelligence,,dni.gov,N
+Federal Organization,Federal Energy Regulatory Commission,,ferc.gov,N
+Federal Organization,Department of the Treasury,Internal Revenue Service,irs.gov,Y
+Federal Organization,Department of Health and Human Services,National Institutes of Health,nih.hhs.gov,Y

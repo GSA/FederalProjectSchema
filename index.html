@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>JSON Editor Example</title>
+    <title>DRAFT <a href="https://github.com/JJediny/FederalProjectSchema" target="_blank">FederalProjectSchema</a></title>
 
     <!-- placeholders for the theme switcher -->
     <link rel='stylesheet' id='theme_stylesheet'>
@@ -26,8 +26,9 @@
 <div class='container'>
     <div class='row'>
         <div class='span8 col-md-8 columns eight large-8'>
-            <h2>Editor</h2>
-            <p>Below is the editor generated from the JSON Schema.</p>
+            <h2>Made with <a href="https://github.com/JJediny/json-editor" target="_blank">json-editor</a></h2>
+            <img alt="Embedded Image" width="700px" height="200px" src="data:image/png;base64,1d51dc68a789839e809d7546692359305dd726e8/68747470733a2f2f7261772e6769746875622e636f6d2f6a646f726e2f6a736f6e2d656469746f722f6d61737465722f6a736f6e656469746f722e706e67"/>
+            <p>Below is the editor generated directly from the DRAFT FederalProjectSchema</p>
 
             <div id='editor'></div>
         </div>
@@ -35,10 +36,6 @@
             <div>
                 <a href='#' id='direct_link'>Direct Link</a> (preserves schema, value, and options)
             </div>
-
-            <h2>JSON Output</h2>
-            <p>You can also make changes to the JSON here and set the value in the editor by clicking <button class='btn btn-primary' id='setvalue'>Update Form</button></p>
-            <textarea id='output' style='width: 100%; height: 300px; font-family: monospace;' class='form-control'></textarea>
 
             <h2>Options</h2>
             <div id='options_holder'>
@@ -67,6 +64,11 @@
                         <option value='fontawesome4'>FontAwesome 4</option>
                     </select>
                 </div>
+
+                <h2>JSON Output</h2>
+                <p>You can also make changes to the JSON here and set the value in the editor by clicking <button class='btn btn-primary' id='setvalue'>Update Form</button></p>
+                <textarea id='output' style='width: 100%; height: 300px; font-family: monospace;' class='form-control'></textarea>
+
                 <div>
                     <label>Object Layout</label>
                     <select id='object_layout' class='form-control'>
@@ -432,13 +434,12 @@ editor.on("change",  function() {
                             ofTotal: {
                                 type: "string",
                                 title: "of Total",
-                                description: "$ or %",
-                                default: "swappable lists"
+                                description: "$ or %"
                             },
                             resourceType: {
                                 type: "string",
                                 title: "Resource Type",
-                                description: "List of Vetting Categories",
+                                description: "List of Vetted Categories",
                                 enum: ["random","words","random","options","agaisnt","swappable lists"],
                                 default: "swappable lists"
                             },
@@ -484,21 +485,21 @@ editor.on("change",  function() {
                         properties: {
                             name: {
                                 type: "string",
-                                title: "Email"
+                                title: "Name"
                             },
                             url: {
                                 type: "string",
-                                title: "Name"
+                                title: "URL"
                             },
                             license: {
                                 type: "string",
-                                title: "Role",
-                                enum: ["Public Domain CC0","Other","Licenses"],
+                                title: "License",
+                                enum: ["Public Domain CC0","Creative Commons Share-alike","Other (use Attribution)"],
                                 default: "Public Domain CC0"
                             },
                             attribution: {
                                 type: "string",
-                                title: "Office",
+                                title: "Attribution",
                                 description: "Attribution Credits Rights"
                             },
                             created: {
@@ -675,7 +676,7 @@ editor.on("change",  function() {
             document.getElementById('theme_switcher').value = theme;
         }
 
-        JSONEditor.defaults.options.theme = theme;
+        JSONEditor.defaults.options.theme = 'bootstrap3';
 
         document.getElementById('theme_stylesheet').href = mapping[theme];
         document.getElementById('theme_switcher').value = JSONEditor.defaults.options.theme;
@@ -694,7 +695,7 @@ editor.on("change",  function() {
             fontawesome4: '//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css'
         };
 
-        JSONEditor.defaults.options.iconlib = iconlib;
+        JSONEditor.defaults.options.iconlib = 'bootstrap3';
 
         document.getElementById('icon_stylesheet').href = mapping[iconlib] || '';
         document.getElementById('icon_switcher').value = JSONEditor.defaults.options.iconlib;
@@ -735,9 +736,9 @@ editor.on("change",  function() {
     }
 
     // Set options from direct link
-    setTheme((window.location.href.match(/[?&]theme=([^&]+)/)||[])[1] || 'bootstrap2', true);
+    setTheme((window.location.href.match(/[?&]theme=([^&]+)/)||[])[1] || 'bootstrap3', true);
 
-    setIconlib((window.location.href.match(/[?&]iconlib=([^&]*)/)||[null,'fontawesome4'])[1], true);
+    setIconlib((window.location.href.match(/[?&]iconlib=([^&]*)/)||[null,'bootstrap3'])[1], true);
 
     document.getElementById('object_layout').value = (window.location.href.match(/[?&]object_layout=([^&]+)/)||[])[1] || 'normal';
     JSONEditor.defaults.options.object_layout = document.getElementById('object_layout').value;
