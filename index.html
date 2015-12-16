@@ -198,10 +198,22 @@ editor.on("change",  function() {
                     default: "swappable list"
                 },
                 keywords: {
+                    type: "array",
+                    format: "table",
                     title: "Keywords",
-                    description: "Comma, Seperated, Values",
-                    type: "string",
-                    default: "1, 2, 3"
+                    description: "",
+                    uniqueItems: true,
+                    items: {
+                        type: "object",
+                        title: "Keywords",
+                        properties: {
+                            additional: {
+                                type: "string",
+                                title: "Keyword",
+                                description: ""
+                            }
+                        }
+                    }
                 },
                 attribution: {
                     title: "Attribution",
