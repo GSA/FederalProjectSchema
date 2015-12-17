@@ -194,7 +194,7 @@ editor.on("change",  function() {
                     title: "Categories",
                     description: "validate agaisnt a list of options",
                     type: "string",
-                    enum: ["random","words","random","options","agaisnt","swappable list"],
+                    enum: ["Animals", "Archeology", "Astronomy & Space", "Biology", "Birds", "Chemistry", "Climate & Weather", "Computers & Technology", "Disaster Response", "Ecology & Environment", "Education", "Food", "Geology & Earth Science", "Health & Medicine", "Insects", "Nature & Outdoors", "Ocean & Water", "Physics", "Psychology", "Science Policy", "Transportation"],
                     default: "swappable list"
                 },
                 keywords: {
@@ -296,7 +296,9 @@ editor.on("change",  function() {
                             },
                             geojson: {
                                 type: "string",
-                                title: "Geojson"
+                                title: "Geojson",
+                                description: "Copy/Paste or URL",
+                                format: "geojson"
                             },
                             lat: {
                                 type: "string",
@@ -338,21 +340,25 @@ editor.on("change",  function() {
                             to: {
                                 type: "string",
                                 title: "Date from",
+                                format: "date",
                                 default: "YYYY-MM-DD"
                             },
                             from: {
                                 type: "string",
                                 title: "Date to",
+                                format: "date",
                                 default: "YYYY-MM-DD"
                             },
                             estimated: {
                                 type: "string",
                                 title: "Estimated Date",
+                                format: "date",
                                 default: "YYYY-MM-DD"
                             },
                             modified: {
                                 type: "string",
                                 title: "Date Modified",
+                                format: "date",
                                 default: "YYYY-MM-DDT12:00:00.000Z"
                             },
                             contactId: {
