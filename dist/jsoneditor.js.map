@@ -22,6 +22,7 @@
     "src/editors/selectize.js",
     "src/editors/multiselect.js",
     "src/editors/base64.js",
+    "src/editors/geojson.js",
     "src/editors/upload.js",
     "src/editors/checkbox.js",
     "src/editors/array/selectize.js",
