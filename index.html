@@ -11,6 +11,9 @@
     <style>[class*="foundicon-"] {font-family: GeneralFoundicons;font-style: normal;}</style>
     <script src='dist/jsoneditor.js'></script>
 
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+    <script src="//cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+    <!--<script src='dist/datasourceeditor.js'></script> Placeholder for adding schema options to load and save function-->
     <script>
     /**
      * LZString compression library
@@ -44,6 +47,7 @@
                         <option value='jqueryui'>jQuery UI</option>
                         <option value='bootstrap2'>Bootstrap 2</option>
                         <option value='bootstrap3'>Bootstrap 3</option>
+                        <option value='bootstrap3paper'>Bootstrap 3 Paper</option>
                         <option value='foundation3'>Foundation 3</option>
                         <option value='foundation4'>Foundation 4</option>
                         <option value='foundation5'>Foundation 5</option>
@@ -105,6 +109,19 @@
         </div>
         <div class='row'>
             <div class='span12 col-md-12 columns twelve large-12'>
+                <h2>Markdown Editor</h2>
+                <p>The information generated from the form <b>above</b> (i.e json), can be converted into Yet Another Markup Language (.yaml or .yml). YAML is very human-readble yet can handle hierarchies/nested data within a single/flat file. YAML is commonly used by most static site generators to manage a "page's" metadata or structured content like keywords/categories/layouts/etc. or can inject this information directly into reusable html templates this is how a static site appears to be interactive. The JSON editor is used to manage/enforce data validation (ex. picking from list of pre-registered options) much like a traditional Content Management System (CMS) but without any dedicated server and database needed. The markdown (.md) created using the editor <b>below</b> can be combined (with the <b>above</b> JSON/YAML) to create a single .md file ready to be added to any Static Site.</p>
+                <textarea id="demo" style="display: none;"># Intro</textarea>
+                    <script>
+                    new SimpleMDE({
+                  		element: document.getElementById("demo"),
+                  		spellChecker: true,
+                  		autosave: {
+                  			enabled: true,
+                  			unique_id: "demo",
+                  		},
+                  	});
+                    </script>
                 <h2>Schema</h2>
                 <p>You can change the schema and see how the generated form looks.  After you make changes, click <button class='btn btn-primary' id='setschema'>Update Schema</button></p>
 
@@ -209,7 +226,7 @@
                 },
                 contacts: {
                     type: "array",
-                    format: "table",
+                    format: "tabs",
                     title: "Contacts",
                     description: "Project Team and Contributors",
                     uniqueItems: true,
@@ -217,6 +234,7 @@
                     items: {
                         type: "object",
                         title: "Contact",
+                        headerTemplate: "{{ self.name }} ({{ self.email }})",
                         properties: {
                             email: {
                                 type: "string",
@@ -284,7 +302,7 @@
                 },
                 temporal: {
                     type: "array",
-                    format: "table",
+                    format: "tabs",
                     title: "Temporal",
                     description: "Timeline Milestone Duration",
                     uniqueItems: true,
@@ -292,6 +310,7 @@
                     items: {
                         type: "object",
                         title: "Milestone or Duration",
+                        headerTemplate: "{{ self.name }} ({{ self.milestoneType }})",
                         properties: {
                             name: {
                                 type: "string",
@@ -376,7 +395,7 @@
                 },
                 resources: {
                     type: "array",
-                    format: "table",
+                    format: "tabs",
                     title: "Resources",
                     description: "OPTIONAL FIELD for internal tracking",
                     uniqueItems: true,
@@ -433,6 +452,7 @@
                             created: {
                                 type: "boolean",
                                 title: "Created",
+                                format: "checkbox",
                                 description: "Data Created or Produced from Project"
                             }
                         }
@@ -471,6 +491,7 @@
                             created: {
                                 type: "boolean",
                                 title: "Created",
+                                format: "checkbox",
                                 description: "Data Created or Produced from Project"
                             }
                         }
@@ -513,8 +534,8 @@
                     title: "UUID",
                     description: "UUID are Globally Unique ID used to ensure stablity in referencing and identification of Projects",
                     type: "string",
-                    propertyOrder: 20,
-                    default: "de305d54-75b4-431b-adb2-eb6b9e546014"
+                    format: "uuid",
+                    propertyOrder: 20
                 },
                 extended: {
                     type: "array",
@@ -562,6 +583,9 @@
     var $set_value_button = document.getElementById('setvalue');
 
     var jsoneditor;
+
+    // Global options to set on load
+    JSONEditor.defaults.options.disable_collapse = 'true';
 
     var updateDirectLink = function() {
         var url = window.location.href.replace(/\?.*/,'');
@@ -642,7 +666,7 @@
         var mapping = {
             html: '',
             bootstrap2: '//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css',
-            bootstrap3: '//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css',
+            bootstrap3: '//bootswatch.com/paper/bootstrap.min.css',
             foundation3: '//cdnjs.cloudflare.com/ajax/libs/foundation/3.2.5/stylesheets/foundation.css',
             foundation4: '//cdn.jsdelivr.net/foundation/4.3.2/css/foundation.min.css',
             foundation5: '//cdn.jsdelivr.net/foundation/5.0.2/css/foundation.min.css',
