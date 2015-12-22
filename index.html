@@ -28,17 +28,39 @@
 <body>
 <div class='container'>
     <div class='row'>
-        <div class='span8 col-md-8 columns eight large-8'>
-            <h2><a href="https://github.com/JJediny/FederalProjectSchema/blob/master/project-template.md">DRAFT FederalProjectSchema</a></h2>
-            <p>The form generated directly from the DRAFT FederalProjectSchema <a href="https://github.com/JJediny/json-editor">with json-editor</a></p>
-            <img src="jsoneditor.png" alt="json-editor">
-            <div id='editor'></div>
-        </div>
-        <div class='span4 col-md-4 columns four large-4'>
+          <div class='span8 col-md-8 columns eight large-8'>
+              <h2><a href="https://github.com/JJediny/FederalProjectSchema/blob/master/project-template.md">DRAFT FederalProjectSchema</a></h2>
+              <p>The form generated directly from the DRAFT FederalProjectSchema <a href="https://github.com/JJediny/json-editor">with json-editor</a></p>
+              <img src="jsoneditor.png" alt="json-editor">
+              <div id='editor'></div>
+
+              <h2>Markdown Editor</h2>
+              <p>The information generated from the form <b>above</b> (i.e json), can be converted into Yet Another Markup Language (.yaml or .yml). YAML is very human-readble yet can handle hierarchies/nested data within a single/flat file. YAML is commonly used by most static site generators to manage a "page's" metadata or structured content like keywords/categories/layouts/etc. or can inject this information directly into reusable html templates this is how a static site appears to be interactive. The JSON editor is used to manage/enforce data validation (ex. picking from list of pre-registered options) much like a traditional Content Management System (CMS) but without any dedicated server and database needed. The markdown (.md) created using the editor <b>below</b> can be combined (with the <b>above</b> JSON/YAML) to create a single .md file ready to be added to any Static Site.</p>
+              <textarea id="demo" style="display: none;"># Intro</textarea>
+                  <script>
+                  new SimpleMDE({
+                    element: document.getElementById("demo"),
+                    spellChecker: true,
+                    autosave: {
+                      enabled: true,
+                      unique_id: "demo",
+                    },
+                  });
+                  </script>
+          </div>
+          <div class='span4 col-md-4 columns four large-4'>
             <div>
                 <a href='#' id='direct_link'>Direct Link</a> (preserves schema, value, and options)
             </div>
-
+          </div>
+    </div>
+    <div class='row'>
+        <div class='span8 col-md-8 columns eight large-8'>
+          <h2>Schema</h2>
+          <p>You can change the schema and see how the generated form looks.  After you make changes, click <button class='btn btn-primary' id='setschema'>Update Schema</button></p>
+          <textarea id='schema' style='width: 100%; height: 450px; font-family: monospace;' class='form-control'></textarea>
+        </div>
+        <div class='span4 col-md-4 columns four large-4'>
             <h2>Options</h2>
             <div id='options_holder'>
                 <div>
@@ -107,27 +129,6 @@
             <h2>Validation</h2>
             <p>This will update whenever the form changes to show validation errors if there are any.</p>
             <textarea id='validate' style='width: 100%; height: 100px; font-family: monospace;' readonly disabled class='form-control'></textarea>
-        </div>
-        <div class='row'>
-            <div class='span12 col-md-12 columns twelve large-12'>
-                <h2>Markdown Editor</h2>
-                <p>The information generated from the form <b>above</b> (i.e json), can be converted into Yet Another Markup Language (.yaml or .yml). YAML is very human-readble yet can handle hierarchies/nested data within a single/flat file. YAML is commonly used by most static site generators to manage a "page's" metadata or structured content like keywords/categories/layouts/etc. or can inject this information directly into reusable html templates this is how a static site appears to be interactive. The JSON editor is used to manage/enforce data validation (ex. picking from list of pre-registered options) much like a traditional Content Management System (CMS) but without any dedicated server and database needed. The markdown (.md) created using the editor <b>below</b> can be combined (with the <b>above</b> JSON/YAML) to create a single .md file ready to be added to any Static Site.</p>
-                <textarea id="demo" style="display: none;"># Intro</textarea>
-                    <script>
-                    new SimpleMDE({
-                  		element: document.getElementById("demo"),
-                  		spellChecker: true,
-                  		autosave: {
-                  			enabled: true,
-                  			unique_id: "demo",
-                  		},
-                  	});
-                    </script>
-                <h2>Schema</h2>
-                <p>You can change the schema and see how the generated form looks.  After you make changes, click <button class='btn btn-primary' id='setschema'>Update Schema</button></p>
-
-                <textarea id='schema' style='width: 100%; height: 450px; font-family: monospace;' class='form-control'></textarea>
-            </div>
         </div>
     </div>
 </div>
