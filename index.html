@@ -385,7 +385,7 @@
                                 uniqueItems: true,
                                 items: {
                                     type: "object",
-                                    title: "Milestone or Duration",
+                                    title: "Tasks",
                                     headerTemplate: "{{ self.name }} [{{ self.taskType }}]",
                                     properties: {
                                       name: {
@@ -394,7 +394,7 @@
                                       },
                                       taskType: {
                                           type: "string",
-                                          title: "Milestone Type",
+                                          title: "Task Type",
                                           enum: ["options","provided","through","describedBy"],
                                           default: "options"
                                       },
