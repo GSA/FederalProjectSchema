@@ -174,7 +174,8 @@
                     title: "Categories",
                     description: "validate agaisnt a list of options",
                     type: "string",
-                    enum: ["Animals", "Archeology", "Astronomy & Space", "Biology", "Birds", "Chemistry", "Climate & Weather", "Computers & Technology", "Disaster Response", "Ecology & Environment", "Education", "Food", "Geology & Earth Science", "Health & Medicine", "Insects", "Nature & Outdoors", "Ocean & Water", "Physics", "Psychology", "Science Policy", "Transportation"],
+                    enum: ["options","provided","through","describedBy"],
+                    default: "options",
                     propertyOrder: 4
                 },
                 keywords: {
@@ -296,6 +297,21 @@
                                 type: "string",
                                 title: "Longitude",
                                 description: "WGS 84"
+                            },
+                            address: {
+                                type: "string",
+                                title: "Address",
+                                description: "Only use if Geojson or Lat/Long is unavailable"
+                            },
+                            city: {
+                                type: "string",
+                                title: "City",
+                                description: "Only use if Geojson or Lat/Long is unavailable"
+                            },
+                            state: {
+                                type: "string",
+                                title: "State",
+                                description: "Only use if Geojson or Lat/Long is unavailable"
                             }
                         }
                     }
@@ -319,8 +335,8 @@
                             milestoneType: {
                                 type: "string",
                                 title: "Milestone Type",
-                                enum: ["random","words","random","options","agaisnt","swappable lists"],
-                                default: "swappable lists"
+                                enum: ["options","provided","through","describedBy"],
+                                default: "options"
                             },
                             description: {
                                 type: "string",
@@ -354,6 +370,75 @@
                                 type: "string",
                                 title: "Contact",
                                 description: "Name@email.gov for person @email.gov for org"
+                            },
+                            isPublic: {
+                                type: "boolean",
+                                title: "Public",
+                                format: "checkbox",
+                                description: "Is the milestone publically viewable"
+                            },
+                            tasks: {
+                                type: "array",
+                                format: "tabs",
+                                title: "Tasks",
+                                description: "Tasks within a Milestone",
+                                uniqueItems: true,
+                                items: {
+                                    type: "object",
+                                    title: "Milestone or Duration",
+                                    headerTemplate: "{{ self.name }} [{{ self.taskType }}]",
+                                    properties: {
+                                      name: {
+                                          type: "string",
+                                          title: "Name"
+                                      },
+                                      taskType: {
+                                          type: "string",
+                                          title: "Milestone Type",
+                                          enum: ["options","provided","through","describedBy"],
+                                          default: "options"
+                                      },
+                                      description: {
+                                          type: "string",
+                                          title: "Description"
+                                      },
+                                      to: {
+                                          type: "string",
+                                          title: "Date from",
+                                          format: "date",
+                                          default: "YYYY-MM-DD"
+                                      },
+                                      from: {
+                                          type: "string",
+                                          title: "Date to",
+                                          format: "date",
+                                          default: "YYYY-MM-DD"
+                                      },
+                                      estimated: {
+                                          type: "string",
+                                          title: "Estimated Date",
+                                          format: "date",
+                                          default: "YYYY-MM-DD"
+                                      },
+                                      modified: {
+                                          type: "string",
+                                          title: "Date Modified",
+                                          format: "date",
+                                          default: "YYYY-MM-DDT12:00:00.000Z"
+                                      },
+                                      contactId: {
+                                          type: "string",
+                                          title: "Contact",
+                                          description: "Name@email.gov for person @email.gov for org"
+                                      },
+                                      isPublic: {
+                                          type: "boolean",
+                                          title: "Public",
+                                          format: "checkbox",
+                                          description: "Is the milestone publically viewable"
+                                      }
+                                    }
+                                }
                             }
                         }
                     }
@@ -382,8 +467,8 @@
                                 type: "string",
                                 title: "Media Type",
                                 description: "File or Format",
-                                enum: ["random","words","random","options","agaisnt","swappable lists"],
-                                default: "swappable lists"
+                                enum: ["options","provided","through","describedBy"],
+                                default: "options"
                             },
                             attribution: {
                                 type: "string",
@@ -397,7 +482,7 @@
                     type: "array",
                     format: "tabs",
                     title: "Resources",
-                    description: "OPTIONAL FIELD for internal tracking",
+                    description: "Optionally for internal tracking",
                     uniqueItems: true,
                     propertyOrder: 14,
                     items: {
@@ -423,12 +508,18 @@
                                 type: "string",
                                 title: "Resource Type",
                                 description: "List of Vetted Categories",
-                                enum: ["random","words","random","options","agaisnt","swappable lists"],
-                                default: "swappable lists"
+                                enum: ["options","provided","through","describedBy"],
+                                default: "options"
                             },
                             description: {
                                 type: "string",
                                 title: "Description"
+                            },
+                            isPublic: {
+                                type: "boolean",
+                                title: "Public",
+                                format: "checkbox",
+                                description: "Is the milestone publically viewable"
                             }
                         }
                     }
@@ -500,7 +591,7 @@
                 isPartof: {
                     type: "array",
                     format: "table",
-                    title: "Collections or Related Projects",
+                    title: "Related Projects",
                     description: "isPartof implies current project is a smaller/subset to a larger project or effort uses UUID",
                     uniqueItems: true,
                     propertyOrder: 17,
@@ -508,24 +599,24 @@
                         type: "object",
                         title: "Parent Project UUID",
                         properties: {
-                            additional: {
+                            parentUUID: {
                                 type: "string",
-                                title: "UUID",
-                                description: "isPartof implies current project is a smaller/subset to a larger project or effort uses UUID"
+                                title: "Parent UUID",
+                                description: "isPartof implies current project is a smaller/subset to a larger project or effort use Parent UUID or URI"
                             }
                         }
                     }
                 },
                 conformsTo: {
-                    title: "Schema",
+                    title: "Federal Project Schema",
                     description: "Human readable documentation on schema does not yet exist - only provided as an example",
                     type: "string",
                     propertyOrder: 18,
                     default: "https://some.website/projects/1.0/schema"
                 },
                 describedBy: {
-                    title: "Extended Schema",
-                    description: "Extended Schema that confomsTo overall Projects Schema but may supplement",
+                    title: "describedBy Schema",
+                    description: "Extended from Federal Project Schema but provides values for dropdowns and/or can extended to add additional fields",
                     type: "string",
                     propertyOrder: 19,
                     default: "https://some.website/projects/category/v1.0/schema.json"
@@ -560,13 +651,6 @@
                             }
                         }
                     }
-                },
-                markdown: {
-                    title: "Markdown",
-                    description: "Markdown field to output Markdown for hosting on Static Sites like Github packages",
-                    type: "string",
-                    propertyOrder: 22,
-                    format: "markdown"
                 }
             }
         }
