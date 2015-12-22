@@ -1,0 +1,13 @@
+language: ruby
+rvm:
+  - 2.2.0
+
+script: "bundle jekyll build"
+
+notifications:
+  email:
+    - john.jediny@gmail.com
+
+branches:
+  only:
+    - gh-pages
