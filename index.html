@@ -29,7 +29,7 @@
 <div class='container'>
     <div class='row'>
           <div class='span8 col-md-8 columns eight large-8'>
-              <h2><a href="https://github.com/JJediny/FederalProjectSchema/blob/master/project-template.md">DRAFT FederalProjectSchema</a></h2>
+              <h3><a href="https://github.com/JJediny/FederalProjectSchema/blob/master/project-template.md">DRAFT FederalProjectSchema</a></h3>
               <p>The form generated directly from the DRAFT FederalProjectSchema <a href="https://github.com/JJediny/json-editor">with json-editor</a></p>
               <img src="jsoneditor.png" alt="json-editor">
               <div id='editor'></div>
@@ -52,10 +52,9 @@
             <div>
                 <a href='#' id='direct_link'>Direct Link</a> (preserves schema, value, and options)
             </div>
-
-            <h2>JSON Output</h2>
+            <h3>JSON Output</h3>
             <p>You can also make changes to the JSON here and set the value in the editor by clicking <button class='btn btn-primary' id='setvalue'>Update Form</button></p>
-            <textarea id='output' style='width: 100%; height: 900px; font-family: monospace;' class='form-control'></textarea>
+            <textarea id='output' style='width: 100%; height: 900px; font-family: monospace; background-color: #000;' class='form-control'></textarea>
           </div>
     </div>
     <div class='row'>
@@ -169,7 +168,7 @@
                     title: "Status",
                     description: "Phase or Stage of a Project",
                     type: "string",
-                    enum: ["discovery", "alpha", "beta", "live", "sunset", "transfer", "end"],
+                    enum: ["options","provided","through","describedBy"],
                     propertyOrder: 3
                 },
                 categories: {
@@ -177,7 +176,6 @@
                     description: "validate agaisnt a list of options",
                     type: "string",
                     enum: ["options","provided","through","describedBy"],
-                    default: "options",
                     propertyOrder: 4
                 },
                 keywords: {
@@ -199,12 +197,6 @@
                         }
                     }
                 },
-                attribution: {
-                    title: "Attribution",
-                    description: "Attribution, Credits, Rights",
-                    type: "string",
-                    propertyOrder: 6
-                },
                 accessLevel: {
                     title: "Access Level",
                     description: "Access Level",
@@ -217,7 +209,6 @@
                     description: "Organization hosting the Project",
                     type: "string",
                     minLength: 4,
-                    default: "Organization Name",
                     propertyOrder: 8
                 },
                 publishedURL: {
@@ -237,21 +228,25 @@
                     items: {
                         type: "object",
                         title: "Contact",
-                        headerTemplate: "{{ self.name }} ({{ self.email }})",
+                        headerTemplate: "{{ self.email }}",
                         properties: {
-                            email: {
+                            contactType: {
                                 type: "string",
-                                title: "Email"
+                                title: "Contact Type",
+                                enum: ["options","provided","through","describedBy"]
+                            },
+                            contactRole: {
+                                type: "string",
+                                title: "Role",
+                                enum: ["options","provided","through","describedBy"]
                             },
                             name: {
                                 type: "string",
-                                title: "Name"
+                                title: "Full Name"
                             },
-                            role: {
+                            email: {
                                 type: "string",
-                                title: "Role",
-                                enum: ["Project Lead","Communications Lead","etc","etc"],
-                                default: "Project Lead"
+                                title: "Email"
                             },
                             office: {
                                 type: "string",
@@ -260,12 +255,6 @@
                             description: {
                                 type: "string",
                                 title: "Description"
-                            },
-                            contactType: {
-                                type: "string",
-                                title: "Contact Type",
-                                enum: ["Project Team","Cooperating Agency","Consulting Agency","Contributor","Stakeholder","External Party"],
-                                default: "Project Team"
                             }
                         }
                     }
@@ -287,33 +276,23 @@
                             geojson: {
                                 type: "string",
                                 title: "Geojson",
-                                description: "Copy/Paste or URL",
+                                description: "Copy/Paste or URL see http://geojson.io",
                                 format: "geojson"
-                            },
-                            lat: {
-                                type: "string",
-                                title: "Latitude",
-                                description: "WGS 84"
-                            },
-                            long: {
-                                type: "string",
-                                title: "Longitude",
-                                description: "WGS 84"
                             },
                             address: {
                                 type: "string",
                                 title: "Address",
-                                description: "Only use if Geojson or Lat/Long is unavailable"
+                                description: "Only use if Geojson is unavailable"
                             },
                             city: {
                                 type: "string",
                                 title: "City",
-                                description: "Only use if Geojson or Lat/Long is unavailable"
+                                description: "Only use if Geojson is unavailable"
                             },
                             state: {
                                 type: "string",
                                 title: "State",
-                                description: "Only use if Geojson or Lat/Long is unavailable"
+                                description: "Only use if Geojson is unavailable"
                             }
                         }
                     }
@@ -322,23 +301,23 @@
                     type: "array",
                     format: "tabs",
                     title: "Temporal",
-                    description: "Timeline Milestone Duration",
+                    description: "Duration of a specific Activity",
                     uniqueItems: true,
                     propertyOrder: 12,
                     items: {
                         type: "object",
-                        title: "Milestone or Duration",
-                        headerTemplate: "{{ self.name }} ({{ self.milestoneType }})",
+                        title: "Activity",
+                        headerTemplate: "{{ self.name }},{{ self.milestoneType }}",
                         properties: {
+                            activityType: {
+                                type: "string",
+                                title: "Activity Type",
+                                descripton: "Discrete Process/Step/Requirement/Phase of a project",
+                                enum: ["options","provided","through","describedBy"]
+                            },
                             name: {
                                 type: "string",
                                 title: "Name"
-                            },
-                            milestoneType: {
-                                type: "string",
-                                title: "Milestone Type",
-                                enum: ["options","provided","through","describedBy"],
-                                default: "options"
                             },
                             description: {
                                 type: "string",
@@ -370,14 +349,15 @@
                             },
                             contactId: {
                                 type: "string",
-                                title: "Contact",
+                                title: "Point of Contact",
                                 description: "Name@email.gov for person @email.gov for org"
                             },
                             isPublic: {
                                 type: "boolean",
                                 title: "Public",
                                 format: "checkbox",
-                                description: "Is the milestone publically viewable"
+                                default: "true",
+                                description: "Is the activity publically viewable"
                             },
                             tasks: {
                                 type: "array",
@@ -388,17 +368,16 @@
                                 items: {
                                     type: "object",
                                     title: "Tasks",
-                                    headerTemplate: "{{ self.name }} [{{ self.taskType }}]",
+                                    headerTemplate: "{{ self.name }}",
                                     properties: {
+                                      milestoneType: {
+                                          type: "string",
+                                          title: "Task Type",
+                                          enum: ["options","provided","through","describedBy"]
+                                      },
                                       name: {
                                           type: "string",
                                           title: "Name"
-                                      },
-                                      taskType: {
-                                          type: "string",
-                                          title: "Task Type",
-                                          enum: ["options","provided","through","describedBy"],
-                                          default: "options"
                                       },
                                       description: {
                                           type: "string",
@@ -430,13 +409,14 @@
                                       },
                                       contactId: {
                                           type: "string",
-                                          title: "Contact",
+                                          title: "Point of Contact",
                                           description: "Name@email.gov for person @email.gov for org"
                                       },
                                       isPublic: {
                                           type: "boolean",
                                           title: "Public",
                                           format: "checkbox",
+                                          default: "true",
                                           description: "Is the milestone publically viewable"
                                       }
                                     }
@@ -470,7 +450,7 @@
                                 title: "Media Type",
                                 description: "File or Format",
                                 enum: ["options","provided","through","describedBy"],
-                                default: "options"
+                                default: ""
                             },
                             attribution: {
                                 type: "string",
@@ -484,13 +464,20 @@
                     type: "array",
                     format: "tabs",
                     title: "Resources",
-                    description: "Optionally for internal tracking",
+                    description: "Optional for Resources, Funds, Materials, Services for the Project",
                     uniqueItems: true,
                     propertyOrder: 14,
                     items: {
                         type: "object",
                         title: "Resources",
                         properties: {
+                            resourceType: {
+                                type: "string",
+                                title: "Resource Type",
+                                description: "List of Resources Categories",
+                                enum: ["options","provided","through","describedBy"],
+                                default: ""
+                            },
                             email: {
                                 type: "string",
                                 title: "Email",
@@ -506,13 +493,6 @@
                                 title: "of Total",
                                 description: "$ or %"
                             },
-                            resourceType: {
-                                type: "string",
-                                title: "Resource Type",
-                                description: "List of Vetted Categories",
-                                enum: ["options","provided","through","describedBy"],
-                                default: "options"
-                            },
                             description: {
                                 type: "string",
                                 title: "Description"
@@ -521,6 +501,7 @@
                                 type: "boolean",
                                 title: "Public",
                                 format: "checkbox",
+                                default: "false",
                                 description: "Is the milestone publically viewable"
                             }
                         }
@@ -530,12 +511,12 @@
                     type: "array",
                     format: "table",
                     title: "Federal Data",
-                    description: "Link to Federal Dataset on Data.gov",
+                    description: "Federal Data created or used by the project on Data.gov",
                     uniqueItems: true,
                     propertyOrder: 15,
                     items: {
                         type: "object",
-                        title: "Federal Data Source",
+                        title: "Federal Data",
                         properties: {
                             uri: {
                                 type: "string",
@@ -546,7 +527,7 @@
                                 type: "boolean",
                                 title: "Created",
                                 format: "checkbox",
-                                description: "Data Created or Produced from Project"
+                                description: "Was data created from the Project"
                             }
                         }
                     }
@@ -555,7 +536,7 @@
                     type: "array",
                     format: "table",
                     title: "Data",
-                    description: "Project Team and Contributors",
+                    description: "Non-Federal Data created or used by the project",
                     uniqueItems: true,
                     propertyOrder: 16,
                     items: {
@@ -585,7 +566,8 @@
                                 type: "boolean",
                                 title: "Created",
                                 format: "checkbox",
-                                description: "Data Created or Produced from Project"
+                                default: "true",
+                                description: "Was the Data Created or Produced from the Project"
                             }
                         }
                     }
