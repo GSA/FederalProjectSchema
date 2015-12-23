@@ -4,7 +4,10 @@ node_js:
   - "0.11"
   - "0.10"
 
-script: "npm install && grunt"
+before_script:
+  - npm install -g gulp
+script:
+  - npm install && grunt
 
 notifications:
   email:
