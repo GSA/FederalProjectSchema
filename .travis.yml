@@ -5,7 +5,7 @@ node_js:
   - "0.10"
 
 before_script:
-  - npm install -g gulp
+  - npm install -g grunt-ci
 script:
   - npm install && grunt
 
