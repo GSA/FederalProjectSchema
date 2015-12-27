@@ -235,13 +235,13 @@ function populateSources() {
     if (appendtarget === "#schemas-json") {
       $(appendtarget).append('<li>Forms<ul id="schemas-json"></ul></li>');
       appendtarget='#schemas-json';
-      loadDataSourceList('https://api.github.com/repos/JJediny/json-editor/contents/_schemas/json');
+      loadDataSourceList('https://api.github.com/repos/JJediny/json-editor/contents/_schemas/');
     }
   };
 
   $("#schemas-json").html("");
 
-  var source = 'https://api.github.com/repos/JJediny/json-editor/contents/_schemas/json';
+  var source = 'https://api.github.com/repos/JJediny/json-editor/contents/_schemas/';
 
   // for testing, to reduce wasting Github API calls
   if (false) { source = ''; }
