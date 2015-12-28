@@ -2,11 +2,12 @@ var schema={};
 var catalog={};
 var editor;
 
+
 $(function() {
   var schemafile;
-  $.getJSON('project.json', afterSchemaLoad)
+  $.getJSON('catalog.json', afterSchemaLoad)
   .fail(function(jqxhr, status, error) {
-    alert('Couldn\'t access schema file "project.json": \n' + error)
+    alert('Couldn\'t access schema file "catalog.json": \n' + error)
   });
   $('.row .btn').on('click', function(e) {
     e.preventDefault();
@@ -16,6 +17,7 @@ $(function() {
     });
 
 });
+
 
 function afterSchemaLoad(json) {
     // Initialize the editor
@@ -45,7 +47,7 @@ function afterSchemaLoad(json) {
     };
 
 
-    editor = new JSONEditor(document.getElementById('editor'),{
+    editor = new JSONEditor(document.getElementById('editor_holder'),{
       // Enable fetching schemas via ajax
       ajax: true,
       keep_oneof_values: false, // See https://github.com/jdorn/json-editor/issues/398
@@ -64,11 +66,10 @@ function afterSchemaLoad(json) {
     });
 
 
-
-  $("#output").change(function() {
+  $("#jsonoutput").change(function() {
     var t;
     try {
-      t = JSON.parse($("#output").val());
+      t = JSON.parse($("#jsonoutput").val());
     } catch (e) {
       alert("There's a syntax problem with your JSON code. \n\n" + e.message);
       return;
@@ -98,14 +99,33 @@ function afterSchemaLoad(json) {
     var t0 = performance.now();
     editor.setValue(t);
     console.log("Loaded in " + ((performance.now() - t0)/1000).toFixed(1) + " seconds.");
-    $("#editor").show();
+    $("#editor_holder").show();
     $("#loading").hide();
     $("#savejson").show();
-    $("#editor")[0].scrollIntoView();
+    $("#editor_holder")[0].scrollIntoView();
 
 
   });
 
+  // Hook up the validation indicator to update its
+  // status whenever the editor changes
+  editor.on('change',function() {
+    // Get an array of errors from the validator
+    var errors = editor.validate();
+
+    // Not valid
+    if(errors.length) {
+      // probably not an issue, validation errors are shown already.
+      // alert("Error in the schema file.")
+      // console.log(JSON.stringify(errors,null,2));
+    } else {
+      //if (!$("#loading").is(":visible"))
+        $("#jsonoutput").val(JSON.stringify(editor.getValue(), null, 2));
+    }
+  });
+
+  populateSources();
+}
 
 function clickedExternalJson(e) {
   e.preventDefault();
@@ -114,31 +134,28 @@ function clickedExternalJson(e) {
   // Need to go through Github API or else CORS issues.
   if ($(e.target).data("url")) {
     url = $(e.target).data("url");
-  } else if  (targetname=='data') {
-    url = '';
-  } else if (targetname == 'project') {
-    url ='';
-  } else if (targetname == 'impact') {
-    url = 'https://api.github.com/repos/JJediny/json-editor/contents/_schemas/site/impact.json';
-  } else if (targetname == 'resource') {
-    url ='https://api.github.com/repos/JJediny/json-editor/contents/_schemas/site/resource.json';
-  } else if (targetname == 'solution') {
-    url = 'https://api.github.com/repos/JJediny/json-editor/contents/_schemas/site/solution.json';
-  } else if (targetname == 'topic') {
-    url = 'https://api.github.com/repos/JJediny/json-editor/contents/_schemas/site/impact.json';
-  } else if (targetname == 'datacollection') {
+  } else if  (targetname=='test-special') {
+    url = 'https://gist.githubusercontent.com/stevage/08f89468f51822ade8d7/raw/ced603a2dd6c4dd8664751bc45915a45f493dcbf/gistfile1.json';
+  } else if (targetname == 'ganew') {
+    url ='https://api.github.com/repos/NICTA/nationalmap/contents/wwwroot/init/ganew.json?ref=ga-datasource';
+  } else if (targetname == 'aremi') {
+    url = 'https://api.github.com/repos/NICTA/aremi-natmap/contents/wwwroot/init/aremi.json';
+  } else if (targetname == '(blank)') {
+    //url = 'https://gist.github.com/4092eda0d9b6a54ca839';
     loadedFile({catalog:[]});
+    //$("#jsonoutput").trigger("change");
     return;
   } else {
-    url = 'https://api.github.com/repos/JJediny/json-editor/contents/_schemas/' + targetname + '.json';
+    url = 'https://api.github.com/repos/NICTA/nationalmap/contents/wwwroot/init/' + targetname + '.json';
   }
 
   $("#sourceurl").val(url);
   return;
 }
 
-$("#hardcoded-jsons li").click(clickedExternalJson);
-$("#schemas-json li").click(clickedExternalJson);
+$("#nm-jsons li").click(clickedExternalJson);
+$("#other-jsons li").click(clickedExternalJson);
+
 
 //https://api.github.com/gists/08f89468f51822ade8d7
 
@@ -171,7 +188,7 @@ function loadURL(url) {
       success: loadedFile,
       error: function(e) { alert("Error " + e.status + ": " + e.statusText); }
   });
-  $("#editor").hide();
+  $("#editor_holder").hide();
   $("#loadingmsg").html("<h2>Loading datasource</h2>Large files may take a very long time. Really.");
   $("#loading").show();
 
@@ -187,15 +204,15 @@ function loadedFile(t, status, request) {
         "or manually copy/paste the source file in.");
       }
     }
-    $("#output").val(JSON.stringify(t,null,2));
-    $("#output").trigger("change");
+    $("#jsonoutput").val(JSON.stringify(t,null,2));
+    $("#jsonoutput").trigger("change");
     return;
 
 }
 
-// Use the list of data sources in the Github repo to make a list of clickable targets.
+// Use the list of data sources in the National Map Github repo to make a list of clickable targets.
 function populateSources() {
-  var appendtarget = "#schemas-json";
+  var appendtarget = "#nm-jsons";
 
   function loadDataSourceList(url) {
     $.ajax({
@@ -211,8 +228,11 @@ function populateSources() {
   function loadedList(j) {
     j.forEach(function(e) {
       if (e.url.match(/\.json/)) {
-        //Uses Github API to read json files in a directory
-        var url = 'https://api.github.com/repos/jjediny/json-editor/_schemas' + '/' + e.path;
+        //https://rawgit.com/NICTA/nationalmap/6756f1a1304722b27ff2553a2eb64bfed9dcf212/datasources/000_settings.json
+        // html_url: https://github.com/NICTA/nationalmap/blob/master/datasources/000_settings.json
+        // use rawgit to save Github requests
+        // thought we could use the sha, but it's not the right sha?
+        var url = 'https://rawgit.com/NICTA/nationalmap/master' + '/' + e.path;
         $(appendtarget).append($(
           "<li><a href='#' data-url='" + url + "'" +
             ">" +
@@ -222,27 +242,27 @@ function populateSources() {
             .replace(/_/g, ' ')
             .replace('000 settings', 'General settings') +
             "</a>" +
-            (e.name.match('site') ? ' <ul id="harcoded-schemas"></ul> ' : '') +
+            (e.name.match('00_National_Data_Sets') ? ' <ul id="nm-jsons-national"></ul> ' : '') +
              "</li>"
         ));
       }
 
     });
-    $("#schemas-json li").click(clickedExternalJson);
+    $("#nm-jsons li").click(clickedExternalJson);
     console.log(j);
-    if (appendtarget === "#schemas-json") {
-      $(appendtarget).append('<li>Forms<ul id="schemas-json"></ul></li>');
-      appendtarget='#schemas-json';
-      loadDataSourceList('https://api.github.com/repos/JJediny/json-editor/contents/_schemas/');
+    if (appendtarget === "#nm-jsons") {
+      $(appendtarget).append('<li>National Data Sets<ul id="nm-jsons-national"></ul></li>');
+      appendtarget='#nm-jsons-national';
+      loadDataSourceList('https://api.github.com/repos/NICTA/nationalmap/contents/datasources/00_National_Data_Sets');
     }
   };
 
-  $("#schemas-json").html("");
+  $("#nm-jsons").html("");
 
-  var source = 'https://api.github.com/repos/JJediny/json-editor/contents/_schemas/';
+  var source = 'https://api.github.com/repos/NICTA/nationalmap/contents/datasources';
 
   // for testing, to reduce wasting Github API calls
-  if (false) { source = ''; }
+  if (false) { source = 'https://gist.githubusercontent.com/stevage/d2aef2fddd7e24e305e5/raw/gistfile1.txt'; }
   loadDataSourceList(source);
 
 }
@@ -250,16 +270,18 @@ function populateSources() {
 $("#savejson").click(function(e) {
   function savedGist(j) {
     var raw_url = j.files[Object.keys(j.files)[0]].raw_url;
-    var cleanpreviewurl = 'http://example.com/#proxy' + encodeURIComponent(raw_url);
-    var previewurl = 'http://example.com/' + encodeURIComponent(raw_url);
+    var cleanpreviewurl = 'http://nationalmap.research.nicta.com/#clean&' + encodeURIComponent(raw_url);
+    var previewurl = 'http://nationalmap.research.nicta.com/#' + encodeURIComponent(raw_url);
     $("#loadingmsg").html('<h2>Saved!</h2>' +
-      '<ul><li> You can share this URL with others: <a target="_blank" href="' + j.html_url + '">' + j.html_url + '</a></li>' +
-      '<li><a id="downloadfile" href="#">Download the file</a>.</li>' +
+      '<p><a target="_blank" href="' + cleanpreviewurl + '">Preview your changes in National Map</a></p>' +
+      '<p>If you\'re happy with your changes, you can: ' +
+      '<ul><li> Send this URL to the person who manages your TerriaJS server: <a target="_blank" href="' + j.html_url + '">' + j.html_url + '</a></li>' +
+      '<li><a id="downloadfile" href="#">Download the datasource file</a>.</li>' +
       '</li>'
       );
     $("#loading").show();
     $("#downloadfile").click(function(e) {
-      saveTextAs($("#output").val(), 'datasource.json');
+      saveTextAs($("#jsonoutput").val(), 'datasource.json');
     });
     console.log(j);
     //$("#sourceurl").val(
@@ -267,15 +289,15 @@ $("#savejson").click(function(e) {
   //e.preventDefault();
   var t = JSON.stringify(editor.getValue(),null,2);
   var f = {
-    description: 'Modified file',
+    description: 'Modified data source file',
     'public': false,
     files: {
-      'project.json': { // extract actual filename
+      'datasource.json': { // extract actual filename
         'content': t
       }
     }
   };
-  $("#loadingmsg").html("<h2>Saving...</h2>Saving a copy of your file");
+  $("#loadingmsg").html("<h2>Saving datasource</h2>Saving a copy of your file...");
   $("#loading").show();
   $.post('https://api.github.com/gists', JSON.stringify(f), savedGist, 'json');
 });
