@@ -301,7 +301,8 @@
                             },
                             email: {
                                 type: "string",
-                                title: "Email"
+                                title: "Email",
+                                description: "Use name@email.gov for contact or @email.gov for organization"
                             },
                             office: {
                                 type: "string",
@@ -368,7 +369,7 @@
                     items: {
                         type: "object",
                         title: "Activity",
-                        headerTemplate: "{{ self.name }},{{ self.milestoneType }}",
+                        headerTemplate: "{{ self.name }}",
                         properties: {
                             activityType: {
                                 type: "string",
@@ -405,10 +406,9 @@
                             modified: {
                                 type: "string",
                                 title: "Date Modified",
-                                format: "date",
-                                default: "YYYY-MM-DDT12:00:00.000Z"
+                                format: "datetime-local"
                             },
-                            contactId: {
+                            contact: {
                                 type: "string",
                                 title: "Point of Contact",
                                 description: "Name@email.gov for person @email.gov for org"
@@ -465,8 +465,7 @@
                                       modified: {
                                           type: "string",
                                           title: "Date Modified",
-                                          format: "date",
-                                          default: "YYYY-MM-DDT12:00:00.000Z"
+                                          format: "datetime-local"
                                       },
                                       contactId: {
                                           type: "string",
@@ -477,21 +476,18 @@
                                           type: "boolean",
                                           title: "Public",
                                           format: "checkbox",
-                                          default: "true",
-                                          description: "Is the task publically viewable",
+                                          description: "Is the task publically viewable"
                                       },
                                       isWanted: {
                                           type: "boolean",
                                           title: "Help Wanted",
                                           format: "checkbox",
-                                          default: "false",
                                           description: "Is this task needed/wanted"
                                       },
                                       isPause: {
                                           type: "boolean",
                                           title: "Pause",
                                           format: "checkbox",
-                                          default: "false",
                                           description: "Is the task out of your control/responsibility"
                                       }
                                     }
@@ -566,8 +562,8 @@
                             contact: {
                                 type: "string",
                                 title: "Email",
-                                type: "email",
-                                description: "Use name@email.gov for Point of Contact or @email.gov for organization"
+                                type: "string",
+                                description: "name@email.gov for person @email.gov for organization"
                             },
                             portionOf: {
                                 type: "string",
@@ -590,7 +586,6 @@
                                 type: "boolean",
                                 title: "Help Wanted",
                                 format: "checkbox",
-                                default: "false",
                                 description: "Is the Resource needed/wanted not yet acquired"
                             }
                         }
