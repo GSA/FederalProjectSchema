@@ -10,7 +10,7 @@
 
     <style>[class*="foundicon-"] {font-family: GeneralFoundicons;font-style: normal;}</style>
     <script src='js/jquery.js' type="text/javascript"></script>
-    <script src='dist/datasourceeditor.js' type="text/javascript"></script>
+    <!--<script src='dist/datasourceeditor.js' type="text/javascript"></script>-->
     <script src='dist/jsoneditor.js' type="text/javascript"></script>
 
     <link rel="stylesheet" href="//cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
@@ -244,7 +244,7 @@
                         type: "object",
                         title: "Keywords",
                         properties: {
-                            additional: {
+                            keyword: {
                                 type: "string",
                                 title: "Keyword",
                                 description: ""
@@ -362,7 +362,7 @@
                     type: "array",
                     format: "tabs",
                     title: "Temporal",
-                    description: "Duration of a specific Activity",
+                    description: "Duration of specific Activities",
                     uniqueItems: true,
                     propertyOrder: 12,
                     items: {
@@ -473,19 +473,26 @@
                                           title: "Point of Contact",
                                           description: "Name@email.gov for person @email.gov for org"
                                       },
-                                      pause: {
-                                          type: "boolean",
-                                          title: "Pause",
-                                          format: "checkbox",
-                                          default: "false",
-                                          description: "Is the task out of your control/responsibility"
-                                      },
                                       isPublic: {
                                           type: "boolean",
                                           title: "Public",
                                           format: "checkbox",
                                           default: "true",
-                                          description: "Is the task publically viewable"
+                                          description: "Is the task publically viewable",
+                                      },
+                                      isWanted: {
+                                          type: "boolean",
+                                          title: "Help Wanted",
+                                          format: "checkbox",
+                                          default: "false",
+                                          description: "Is this task needed/wanted"
+                                      },
+                                      isPause: {
+                                          type: "boolean",
+                                          title: "Pause",
+                                          format: "checkbox",
+                                          default: "false",
+                                          description: "Is the task out of your control/responsibility"
                                       }
                                     }
                                 }
@@ -503,6 +510,7 @@
                     items: {
                         type: "object",
                         title: "Media",
+                        headerTemplate: "{{ self.name }}",
                         properties: {
                             name: {
                                 type: "string",
@@ -538,6 +546,7 @@
                     items: {
                         type: "object",
                         title: "Resources",
+                        headerTemplate: "{{ self.name }}",
                         properties: {
                             resourceType: {
                                 type: "string",
@@ -546,20 +555,70 @@
                                 enum: ["options","provided","through","describedBy"],
                                 default: ""
                             },
-                            email: {
+                            name: {
+                                type: "string",
+                                title: "Name"
+                            },
+                            description: {
+                                type: "string",
+                                title: "Description"
+                            },
+                            contact: {
                                 type: "string",
                                 title: "Email",
-                                description: "Use name@email.gov for responsible POC or @email.gov for organization"
+                                type: "email",
+                                description: "Use name@email.gov for Point of Contact or @email.gov for organization"
                             },
                             portionOf: {
                                 type: "string",
                                 title: "Portion of",
-                                description: "$ or %",
+                                description: "Amount $ Percentage % or Portion of Total",
                             },
                             ofTotal: {
                                 type: "string",
                                 title: "of Total",
-                                description: "$ or %"
+                                description: "Amount $ Percentage % of Total"
+                            },
+                            isPublic: {
+                                type: "boolean",
+                                title: "Public",
+                                format: "checkbox",
+                                default: "true",
+                                description: "Is the milestone publically viewable",
+                            },
+                            isWanted: {
+                                type: "boolean",
+                                title: "Help Wanted",
+                                format: "checkbox",
+                                default: "false",
+                                description: "Is the Resource needed/wanted not yet acquired"
+                            }
+                        }
+                    }
+                },
+                outcomes: {
+                    type: "array",
+                    format: "tabs",
+                    title: "Outcomes",
+                    description: "Optional for Outcomes/Impacts of the Project desired or realized",
+                    uniqueItems: true,
+                    propertyOrder: 14,
+                    items: {
+                        type: "object",
+                        title: "Outcomes",
+                        headerTemplate: "{{ self.name }}",
+                        properties: {
+                            resourceType: {
+                                type: "string",
+                                title: "Outcome Type",
+                                description: "List of Resources Categories",
+                                enum: ["options","provided","through","describedBy"],
+                                default: ""
+                            },
+                            name: {
+                                type: "string",
+                                title: "Name",
+                                description: ""
                             },
                             description: {
                                 type: "string",
@@ -569,8 +628,15 @@
                                 type: "boolean",
                                 title: "Public",
                                 format: "checkbox",
+                                default: "true",
+                                description: "Is the milestone publically viewable",
+                            },
+                            isWanted: {
+                                type: "boolean",
+                                title: "Wanted/Proposed",
+                                format: "checkbox",
                                 default: "false",
-                                description: "Is the milestone publically viewable"
+                                description: "Is the Outcome needed/wanted not yet realized"
                             }
                         }
                     }
@@ -595,6 +661,7 @@
                                 type: "boolean",
                                 title: "Created",
                                 format: "checkbox",
+                                default: "false",
                                 description: "Was data created from the Project"
                             }
                         }
@@ -896,21 +963,6 @@
 
     reload();
 })();
-    $set_yamlconvert_button.addEventListener('click',function () {
-  "use strict";
-
-  var YAML = window.YAML
-    , json
-    , data
-    , yml
-    ;
-
-  json = document.getElementById('output');
-  data = JSON.parse(json);
-  yml = YAML.stringify(data);
-
-  console.log('yamloutput');
-}());
 </script>
 </body>
 </html>
