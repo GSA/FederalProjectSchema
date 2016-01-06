@@ -52,6 +52,17 @@
                   </script>
           </div>
           <div class='span4 col-md-4 columns four large-4'>
+
+            <h3>JSON Output</h3>
+            <p>You can also make changes to the JSON here and set the value in the editor by clicking <button class='btn btn-primary' id='setvalue'>Update Form</button></p>
+            <textarea id='output' style='width: 100%; height: 900px; font-family: monospace;' class='form-control'></textarea>
+            <h3>YAML Output (TBD)</h3>
+            <h3>Schema</h3>
+            <p>You can change the schema and see how the generated form looks.  After you make changes, click <button class='btn btn-primary' id='setschema'>Update Schema</button></p>
+            <textarea id='schema' style='width: 100%; height: 450px; font-family: monospace;' class='form-control'></textarea>
+          </div>
+          <h2>Options</h2>
+          <div id='options_holder'>
             <div>
                 <a href='#' id='direct_link'>Direct Link</a> (preserves schema, value, and options)
             </div>
@@ -101,88 +112,75 @@
                 </div>
               </div>
               </formset>
+              <div>
+                  <label>CSS Framework</label>
+                  <select id='theme_switcher' class='form-control'>
+                      <option value='html'>None</option>
+                      <option value='jqueryui'>jQuery UI</option>
+                      <option value='bootstrap2'>Bootstrap 2</option>
+                      <option value='bootstrap3'>Bootstrap 3</option>
+                      <option value='bootstrap3paper'>Bootstrap 3 Paper</option>
+                      <option value='foundation3'>Foundation 3</option>
+                      <option value='foundation4'>Foundation 4</option>
+                      <option value='foundation5'>Foundation 5</option>
+                  </select>
+              </div>
+              <div>
+                  <label>Icon Library</label>
+                  <select id='icon_switcher' class='form-control'>
+                      <option value=''>None</option>
+                      <option value='jqueryui'>jQuery UI</option>
+                      <option value='bootstrap2'>Bootstrap 2 Glyphicons</option>
+                      <option value='bootstrap3'>Bootstrap 3 Glyphicons</option>
+                      <option value='foundation2'>Foundicons 2</option>
+                      <option value='foundation3'>Foundicons 3</option>
+                      <option value='fontawesome3'>FontAwesome 3</option>
+                      <option value='fontawesome4'>FontAwesome 4</option>
+                  </select>
+              </div>
+              <div>
+                  <label>Object Layout</label>
+                  <select id='object_layout' class='form-control'>
+                      <option value='normal'>normal</option>
+                      <option value='grid'>grid</option>
+                  </select>
+              </div>
+              <div>
+                  <label>Show Errors</label>
+                  <select id='show_errors' class='form-control'>
+                      <option value='interaction'>On Interaction</option>
+                      <option value='change'>On Field Change</option>
+                      <option value='always'>Always</option>
+                      <option value='never'>Never</option>
+                  </select>
+              </div>
 
-                </div>
+              <div>
+                  <label>Boolean options</label>
+                  <select multiple size=9 id='boolean_options' style='width: 100%;' class='form-control'>
+                      <option value='required_by_default'>Object properties required by default</option>
+                      <option value='no_additional_properties'>No additional object properties</option>
+                      <option value='ajax'>Allow loading schemas via Ajax</option>
+                      <option value='disable_edit_json'>Disable "Edit JSON" buttons</option>
+                      <option value='disable_collapse'>Disable collapse buttons</option>
+                      <option value='disable_properties'>Disable properties buttons</option>
+                      <option value='disable_array_add'>Disable array add buttons</option>
+                      <option value='disable_array_reorder'>Disable array move buttons</option>
+                      <option value='disable_array_delete'>Disable array delete buttons</option>
+                  </select>
               </div>
-              </div>
-            <h3>JSON Output</h3>
-            <p>You can also make changes to the JSON here and set the value in the editor by clicking <button class='btn btn-primary' id='setvalue'>Update Form</button></p>
-            <textarea id='output' style='width: 100%; height: 900px; font-family: monospace;' class='form-control'></textarea>
-            <h3>YAML Output</h3>
-            <textarea id='yamloutput' style='width: 100%; height: 900px; font-family: monospace;' class='form-control'></textarea>
           </div>
+
+          <h2>Validation</h2>
+          <p>This will update whenever the form changes to show validation errors if there are any.</p>
+          <textarea id='validate' style='width: 100%; height: 100px; font-family: monospace;' readonly disabled class='form-control'></textarea>
     </div>
     <div class='row'>
         <div class='span8 col-md-8 columns eight large-8'>
-          <h2>Schema</h2>
-          <p>You can change the schema and see how the generated form looks.  After you make changes, click <button class='btn btn-primary' id='setschema'>Update Schema</button></p>
-          <textarea id='schema' style='width: 100%; height: 450px; font-family: monospace;' class='form-control'></textarea>
+
         </div>
         <div class='span4 col-md-4 columns four large-4'>
-            <h2>Options</h2>
-            <div id='options_holder'>
-                <div>
-                    <label>CSS Framework</label>
-                    <select id='theme_switcher' class='form-control'>
-                        <option value='html'>None</option>
-                        <option value='jqueryui'>jQuery UI</option>
-                        <option value='bootstrap2'>Bootstrap 2</option>
-                        <option value='bootstrap3'>Bootstrap 3</option>
-                        <option value='bootstrap3paper'>Bootstrap 3 Paper</option>
-                        <option value='foundation3'>Foundation 3</option>
-                        <option value='foundation4'>Foundation 4</option>
-                        <option value='foundation5'>Foundation 5</option>
-                    </select>
-                </div>
-                <div>
-                    <label>Icon Library</label>
-                    <select id='icon_switcher' class='form-control'>
-                        <option value=''>None</option>
-                        <option value='jqueryui'>jQuery UI</option>
-                        <option value='bootstrap2'>Bootstrap 2 Glyphicons</option>
-                        <option value='bootstrap3'>Bootstrap 3 Glyphicons</option>
-                        <option value='foundation2'>Foundicons 2</option>
-                        <option value='foundation3'>Foundicons 3</option>
-                        <option value='fontawesome3'>FontAwesome 3</option>
-                        <option value='fontawesome4'>FontAwesome 4</option>
-                    </select>
-                </div>
-                <div>
-                    <label>Object Layout</label>
-                    <select id='object_layout' class='form-control'>
-                        <option value='normal'>normal</option>
-                        <option value='grid'>grid</option>
-                    </select>
-                </div>
-                <div>
-                    <label>Show Errors</label>
-                    <select id='show_errors' class='form-control'>
-                        <option value='interaction'>On Interaction</option>
-                        <option value='change'>On Field Change</option>
-                        <option value='always'>Always</option>
-                        <option value='never'>Never</option>
-                    </select>
-                </div>
 
-                <div>
-                    <label>Boolean options</label>
-                    <select multiple size=9 id='boolean_options' style='width: 100%;' class='form-control'>
-                        <option value='required_by_default'>Object properties required by default</option>
-                        <option value='no_additional_properties'>No additional object properties</option>
-                        <option value='ajax'>Allow loading schemas via Ajax</option>
-                        <option value='disable_edit_json'>Disable "Edit JSON" buttons</option>
-                        <option value='disable_collapse'>Disable collapse buttons</option>
-                        <option value='disable_properties'>Disable properties buttons</option>
-                        <option value='disable_array_add'>Disable array add buttons</option>
-                        <option value='disable_array_reorder'>Disable array move buttons</option>
-                        <option value='disable_array_delete'>Disable array delete buttons</option>
-                    </select>
-                </div>
-            </div>
-
-            <h2>Validation</h2>
-            <p>This will update whenever the form changes to show validation errors if there are any.</p>
-            <textarea id='validate' style='width: 100%; height: 100px; font-family: monospace;' readonly disabled class='form-control'></textarea>
         </div>
     </div>
 </div>
@@ -341,6 +339,16 @@
                                   }
                                 ]
                             },
+                            latitude: {
+                                type: "string",
+                                title: "Latitude",
+                                description: "WGS-84 - Only use if Geojson is unavailable"
+                            },
+                            longitude: {
+                                type: "string",
+                                title: "Longitude",
+                                description: "WGS-84 - Only use if Geojson is unavailable"
+                            },
                             address: {
                                 type: "string",
                                 title: "Address",
@@ -413,85 +421,28 @@
                                 title: "Point of Contact",
                                 description: "Name@email.gov for person @email.gov for org"
                             },
+                            contactId: {
+                                type: "string",
+                                title: "Point of Contact",
+                                description: "Name@email.gov for person @email.gov for org"
+                            },
                             isPublic: {
                                 type: "boolean",
                                 title: "Public",
                                 format: "checkbox",
-                                default: "true",
-                                description: "Is the activity publically viewable"
+                                description: "Is the task publically viewable"
                             },
-                            tasks: {
-                                type: "array",
-                                format: "tabs",
-                                title: "Tasks",
-                                description: "Tasks within a Milestone",
-                                uniqueItems: true,
-                                items: {
-                                    type: "object",
-                                    title: "Tasks",
-                                    headerTemplate: "{{ self.name }}",
-                                    properties: {
-                                      milestoneType: {
-                                          type: "string",
-                                          title: "Task Type",
-                                          enum: ["options","provided","through","describedBy"]
-                                      },
-                                      name: {
-                                          type: "string",
-                                          title: "Name"
-                                      },
-                                      description: {
-                                          type: "string",
-                                          title: "Description"
-                                      },
-                                      to: {
-                                          type: "string",
-                                          title: "Date from",
-                                          format: "date",
-                                          default: "YYYY-MM-DD"
-                                      },
-                                      from: {
-                                          type: "string",
-                                          title: "Date to",
-                                          format: "date",
-                                          default: "YYYY-MM-DD"
-                                      },
-                                      estimated: {
-                                          type: "string",
-                                          title: "Estimated Date",
-                                          format: "date",
-                                          default: "YYYY-MM-DD"
-                                      },
-                                      modified: {
-                                          type: "string",
-                                          title: "Date Modified",
-                                          format: "datetime-local"
-                                      },
-                                      contactId: {
-                                          type: "string",
-                                          title: "Point of Contact",
-                                          description: "Name@email.gov for person @email.gov for org"
-                                      },
-                                      isPublic: {
-                                          type: "boolean",
-                                          title: "Public",
-                                          format: "checkbox",
-                                          description: "Is the task publically viewable"
-                                      },
-                                      isWanted: {
-                                          type: "boolean",
-                                          title: "Help Wanted",
-                                          format: "checkbox",
-                                          description: "Is this task needed/wanted"
-                                      },
-                                      isPause: {
-                                          type: "boolean",
-                                          title: "Pause",
-                                          format: "checkbox",
-                                          description: "Is the task out of your control/responsibility"
-                                      }
-                                    }
-                                }
+                            isWanted: {
+                                type: "boolean",
+                                title: "Help Wanted",
+                                format: "checkbox",
+                                description: "Is this task needed/wanted"
+                            },
+                            isPause: {
+                                type: "boolean",
+                                title: "Pause",
+                                format: "checkbox",
+                                description: "Is the task out of your control/responsibility"
                             }
                         }
                     }
@@ -532,75 +483,16 @@
                         }
                     }
                 },
-                resources: {
+                goals: {
                     type: "array",
                     format: "tabs",
-                    title: "Resources",
-                    description: "Optional for Resources, Funds, Materials, Services for the Project",
-                    uniqueItems: true,
-                    propertyOrder: 14,
-                    items: {
-                        type: "object",
-                        title: "Resources",
-                        headerTemplate: "{{ self.name }}",
-                        properties: {
-                            resourceType: {
-                                type: "string",
-                                title: "Resource Type",
-                                description: "List of Resources Categories",
-                                enum: ["options","provided","through","describedBy"],
-                                default: ""
-                            },
-                            name: {
-                                type: "string",
-                                title: "Name"
-                            },
-                            description: {
-                                type: "string",
-                                title: "Description"
-                            },
-                            contact: {
-                                type: "string",
-                                title: "Email",
-                                type: "string",
-                                description: "name@email.gov for person @email.gov for organization"
-                            },
-                            portionOf: {
-                                type: "string",
-                                title: "Portion of",
-                                description: "Amount $ Percentage % or Portion of Total",
-                            },
-                            ofTotal: {
-                                type: "string",
-                                title: "of Total",
-                                description: "Amount $ Percentage % of Total"
-                            },
-                            isPublic: {
-                                type: "boolean",
-                                title: "Public",
-                                format: "checkbox",
-                                default: "true",
-                                description: "Is the milestone publically viewable",
-                            },
-                            isWanted: {
-                                type: "boolean",
-                                title: "Help Wanted",
-                                format: "checkbox",
-                                description: "Is the Resource needed/wanted not yet acquired"
-                            }
-                        }
-                    }
-                },
-                outcomes: {
-                    type: "array",
-                    format: "tabs",
-                    title: "Outcomes",
+                    title: "Goals",
                     description: "Optional for Outcomes/Impacts of the Project desired or realized",
                     uniqueItems: true,
                     propertyOrder: 14,
                     items: {
                         type: "object",
-                        title: "Outcomes",
+                        title: "Goals",
                         headerTemplate: "{{ self.name }}",
                         properties: {
                             resourceType: {
@@ -677,6 +569,10 @@
                                 type: "string",
                                 title: "Name"
                             },
+                            description: {
+                                type: "string",
+                                title: "Description"
+                            },
                             url: {
                                 type: "string",
                                 title: "URL"
@@ -726,14 +622,14 @@
                     description: "Human readable documentation on schema does not yet exist - only provided as an example",
                     type: "string",
                     propertyOrder: 18,
-                    default: "https://some.website/projects/1.0/schema"
+                    default: "/projects/schema.json"
                 },
                 describedBy: {
                     title: "describedBy Schema",
                     description: "Extended from Federal Project Schema but provides values for dropdowns and/or can extended to add additional fields",
                     type: "string",
                     propertyOrder: 19,
-                    default: "https://some.website/projects/category/v1.0/schema.json"
+                    default: "/projects/schema/crowdsourcing.json"
                 },
                 UUID: {
                     title: "UUID",
@@ -753,15 +649,64 @@
                         type: "object",
                         title: "Extended",
                         properties: {
-                            additional: {
-                                type: "string",
-                                title: "Additional",
-                                description: "example 1"
-                            },
-                            fields: {
-                                type: "string",
-                                title: "Fields",
-                                description: "example 2"
+                            resources: {
+                                type: "array",
+                                format: "tabs",
+                                title: "Resources",
+                                description: "Optional for Resources, Funds, Materials, Services for the Project",
+                                uniqueItems: true,
+                                propertyOrder: 14,
+                                items: {
+                                    type: "object",
+                                    title: "Resources",
+                                    headerTemplate: "{{ self.name }}",
+                                    properties: {
+                                        resourceType: {
+                                            type: "string",
+                                            title: "Resource Type",
+                                            description: "List of Resources Categories",
+                                            enum: ["options","provided","through","describedBy"],
+                                            default: ""
+                                        },
+                                        name: {
+                                            type: "string",
+                                            title: "Name"
+                                        },
+                                        description: {
+                                            type: "string",
+                                            title: "Description"
+                                        },
+                                        contact: {
+                                            type: "string",
+                                            title: "Email",
+                                            type: "string",
+                                            description: "name@email.gov for person @email.gov for organization"
+                                        },
+                                        portionOf: {
+                                            type: "string",
+                                            title: "Portion of",
+                                            description: "Amount $ Percentage % or Portion of Total",
+                                        },
+                                        ofTotal: {
+                                            type: "string",
+                                            title: "of Total",
+                                            description: "Amount $ Percentage % of Total"
+                                        },
+                                        isPublic: {
+                                            type: "boolean",
+                                            title: "Public",
+                                            format: "checkbox",
+                                            default: "true",
+                                            description: "Is the milestone publically viewable",
+                                        },
+                                        isWanted: {
+                                            type: "boolean",
+                                            title: "Help Wanted",
+                                            format: "checkbox",
+                                            description: "Is the Resource needed/wanted not yet acquired"
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
