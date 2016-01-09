@@ -377,7 +377,7 @@
                     items: {
                         type: "object",
                         title: "Activity",
-                        headerTemplate: "{{ self.name }}",
+                        headerTemplate: "{{ self.name }},{{ self.milestoneType }}",
                         properties: {
                             activityType: {
                                 type: "string",
@@ -393,34 +393,6 @@
                                 type: "string",
                                 title: "Description"
                             },
-                            to: {
-                                type: "string",
-                                title: "Date from",
-                                format: "date",
-                                default: "YYYY-MM-DD"
-                            },
-                            from: {
-                                type: "string",
-                                title: "Date to",
-                                format: "date",
-                                default: "YYYY-MM-DD"
-                            },
-                            estimated: {
-                                type: "string",
-                                title: "Estimated Date",
-                                format: "date",
-                                default: "YYYY-MM-DD"
-                            },
-                            modified: {
-                                type: "string",
-                                title: "Date Modified",
-                                format: "datetime-local"
-                            },
-                            contact: {
-                                type: "string",
-                                title: "Point of Contact",
-                                description: "Name@email.gov for person @email.gov for org"
-                            },
                             contactId: {
                                 type: "string",
                                 title: "Point of Contact",
@@ -430,19 +402,85 @@
                                 type: "boolean",
                                 title: "Public",
                                 format: "checkbox",
-                                description: "Is the task publically viewable"
+                                default: "true",
+                                description: "Is the activity publically viewable"
                             },
-                            isWanted: {
-                                type: "boolean",
-                                title: "Help Wanted",
-                                format: "checkbox",
-                                description: "Is this task needed/wanted"
-                            },
-                            isPause: {
-                                type: "boolean",
-                                title: "Pause",
-                                format: "checkbox",
-                                description: "Is the task out of your control/responsibility"
+                            tasks: {
+                                type: "array",
+                                format: "tabs",
+                                title: "Tasks",
+                                description: "Tasks within a Milestone",
+                                uniqueItems: true,
+                                items: {
+                                    type: "object",
+                                    title: "Tasks",
+                                    headerTemplate: "{{ self.name }}",
+                                    properties: {
+                                      milestoneType: {
+                                          type: "string",
+                                          title: "Task Type",
+                                          enum: ["options","provided","through","describedBy"]
+                                      },
+                                      name: {
+                                          type: "string",
+                                          title: "Name"
+                                      },
+                                      description: {
+                                          type: "string",
+                                          title: "Description"
+                                      },
+                                      to: {
+                                          type: "string",
+                                          title: "Date from",
+                                          format: "date",
+                                          description: "YYYY-MM-DD"
+                                      },
+                                      from: {
+                                          type: "string",
+                                          title: "Date to",
+                                          format: "date",
+                                          description: "YYYY-MM-DD"
+                                      },
+                                      estimated: {
+                                          type: "string",
+                                          title: "Estimated Date",
+                                          format: "date",
+                                          description: "YYYY-MM-DD"
+                                      },
+                                      modified: {
+                                          type: "string",
+                                          title: "Date Modified",
+                                          format: "date",
+                                          descriptionv: "YYYY-MM-DDT12:00:00.000Z"
+                                      },
+                                      ontact: {
+                                          type: "string",
+                                          title: "Point of Contact",
+                                          description: "Name@email.gov for person @email.gov for org"
+                                      },
+                                      isPublic: {
+                                          type: "boolean",
+                                          title: "Public",
+                                          format: "checkbox",
+                                          default: "true",
+                                          description: "Is the task publically viewable",
+                                      },
+                                      isWanted: {
+                                          type: "boolean",
+                                          title: "Help Wanted",
+                                          format: "checkbox",
+                                          default: "false",
+                                          description: "Is this task needed/wanted"
+                                      },
+                                      isPause: {
+                                          type: "boolean",
+                                          title: "Pause",
+                                          format: "checkbox",
+                                          default: "false",
+                                          description: "Is the task out of your control/responsibility"
+                                      }
+                                    }
+                                }
                             }
                         }
                     }
@@ -483,16 +521,65 @@
                         }
                     }
                 },
-                goals: {
+                resources: {
                     type: "array",
                     format: "tabs",
-                    title: "Goals",
+                    title: "Resources",
+                    description: "Optional for Resources, Funds, Materials, Services for the Project",
+                    uniqueItems: true,
+                    propertyOrder: 14,
+                    items: {
+                        type: "object",
+                        title: "Resources",
+                        headerTemplate: "{{ self.name }}",
+                        properties: {
+                            resourceType: {
+                                type: "string",
+                                title: "Resource Type",
+                                description: "List of Resources Categories",
+                                enum: ["options","provided","through","describedBy"],
+                                default: ""
+                            },
+                            name: {
+                                type: "string",
+                                title: "Name"
+                            },
+                            description: {
+                                type: "string",
+                                title: "Description"
+                            },
+                            contact: {
+                                type: "string",
+                                title: "Email",
+                                type: "email",
+                                description: "Use name@email.gov or @email.gov for organization"
+                            },
+                            isPublic: {
+                                type: "boolean",
+                                title: "Public",
+                                format: "checkbox",
+                                default: "true",
+                                description: "Is the milestone publically viewable",
+                            },
+                            isWanted: {
+                                type: "boolean",
+                                title: "Help Wanted",
+                                format: "checkbox",
+                                description: "Is the Resource needed/wanted not yet acquired"
+                            }
+                        }
+                    }
+                },
+                outcomes: {
+                    type: "array",
+                    format: "tabs",
+                    title: "Outcomes",
                     description: "Optional for Outcomes/Impacts of the Project desired or realized",
                     uniqueItems: true,
                     propertyOrder: 14,
                     items: {
                         type: "object",
-                        title: "Goals",
+                        title: "Outcomes",
                         headerTemplate: "{{ self.name }}",
                         properties: {
                             resourceType: {
@@ -649,64 +736,20 @@
                         type: "object",
                         title: "Extended",
                         properties: {
-                            resources: {
-                                type: "array",
-                                format: "tabs",
-                                title: "Resources",
-                                description: "Optional for Resources, Funds, Materials, Services for the Project",
-                                uniqueItems: true,
-                                propertyOrder: 14,
-                                items: {
-                                    type: "object",
-                                    title: "Resources",
-                                    headerTemplate: "{{ self.name }}",
-                                    properties: {
-                                        resourceType: {
-                                            type: "string",
-                                            title: "Resource Type",
-                                            description: "List of Resources Categories",
-                                            enum: ["options","provided","through","describedBy"],
-                                            default: ""
-                                        },
-                                        name: {
-                                            type: "string",
-                                            title: "Name"
-                                        },
-                                        description: {
-                                            type: "string",
-                                            title: "Description"
-                                        },
-                                        contact: {
-                                            type: "string",
-                                            title: "Email",
-                                            type: "string",
-                                            description: "name@email.gov for person @email.gov for organization"
-                                        },
-                                        portionOf: {
-                                            type: "string",
-                                            title: "Portion of",
-                                            description: "Amount $ Percentage % or Portion of Total",
-                                        },
-                                        ofTotal: {
-                                            type: "string",
-                                            title: "of Total",
-                                            description: "Amount $ Percentage % of Total"
-                                        },
-                                        isPublic: {
-                                            type: "boolean",
-                                            title: "Public",
-                                            format: "checkbox",
-                                            default: "true",
-                                            description: "Is the milestone publically viewable",
-                                        },
-                                        isWanted: {
-                                            type: "boolean",
-                                            title: "Help Wanted",
-                                            format: "checkbox",
-                                            description: "Is the Resource needed/wanted not yet acquired"
-                                        }
-                                    }
-                                }
+                            resourceContact: {
+                                type: "string",
+                                title: "Resource Contact",
+                                description: "Use name@email.gov or @email.gov for organization",
+                            },
+                            portionOf: {
+                                type: "string",
+                                title: "Portion of",
+                                description: "Amount $ Percentage % or Portion of Total",
+                            },
+                            ofTotal: {
+                                type: "string",
+                                title: "of Total",
+                                description: "Amount $ Percentage % of Total"
                             }
                         }
                     }
