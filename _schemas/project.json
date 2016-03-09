@@ -1,0 +1,547 @@
+{
+  "title": "FederalProjectSchema",
+  "type": "object",
+  "properties": {
+    "title": {
+      "title": "Title",
+      "description": "Title or Name of the Project",
+      "type": "string",
+      "minLength": 10,
+      "propertyOrder": 1
+    },
+    "description": {
+      "title": "Description",
+      "description": "Abstract or Summary of the Project",
+      "type": "string",
+      "minLength": 10,
+      "propertyOrder": 2
+    },
+    "status": {
+      "title": "Status",
+      "description": "Phase or Stage of a Project",
+      "type": "string",
+      "enum": [
+        "options",
+        "provided",
+        "through",
+        "describedBy"
+      ],
+      "propertyOrder": 3
+    },
+    "categories": {
+      "title": "Categories",
+      "description": "validate agaisnt a list of options",
+      "type": "string",
+      "enum": [
+        "options",
+        "provided",
+        "through",
+        "describedBy"
+      ],
+      "propertyOrder": 4
+    },
+    "keywords": {
+      "type": "array",
+      "format": "table",
+      "title": "Keywords",
+      "description": "",
+      "uniqueItems": true,
+      "propertyOrder": 5,
+      "items": {
+        "type": "object",
+        "title": "Keywords",
+        "properties": {
+          "additional": {
+            "type": "string",
+            "title": "Keyword",
+            "description": ""
+          }
+        }
+      }
+    },
+    "accessLevel": {
+      "title": "Access Level",
+      "description": "Access Level",
+      "type": "string",
+      "enum": [
+        "public",
+        "restricted",
+        "non-public"
+      ],
+      "propertyOrder": 7
+    },
+    "publisher": {
+      "title": "Publisher",
+      "description": "Organization hosting the Project",
+      "type": "string",
+      "minLength": 4,
+      "propertyOrder": 8
+    },
+    "publishedURL": {
+      "title": "Publisher URL",
+      "description": "Link to the project website or page from the source Publisher",
+      "type": "string",
+      "minLength": 4,
+      "propertyOrder": 9
+    },
+    "contacts": {
+      "type": "array",
+      "format": "tabs",
+      "title": "Contacts",
+      "description": "Project Team and Contributors",
+      "uniqueItems": true,
+      "propertyOrder": 10,
+      "items": {
+        "type": "object",
+        "title": "Contact",
+        "headerTemplate": "{{ self.email }}",
+        "properties": {
+          "contactType": {
+            "type": "string",
+            "title": "Contact Type",
+            "enum": [
+              "options",
+              "provided",
+              "through",
+              "describedBy"
+            ]
+          },
+          "contactRole": {
+            "type": "string",
+            "title": "Role",
+            "enum": [
+              "options",
+              "provided",
+              "through",
+              "describedBy"
+            ]
+          },
+          "name": {
+            "type": "string",
+            "title": "Full Name"
+          },
+          "email": {
+            "type": "string",
+            "title": "Email"
+          },
+          "office": {
+            "type": "string",
+            "title": "Office"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          }
+        }
+      }
+    },
+    "spatial": {
+      "type": "array",
+      "format": "table",
+      "title": "Spatial",
+      "uniqueItems": true,
+      "propertyOrder": 11,
+      "items": {
+        "type": "object",
+        "title": "Spatial",
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "geojson": {
+            "type": "string",
+            "title": "Geojson",
+            "description": "Copy/Paste or URL see http://geojson.io",
+            "format": "geojson"
+          },
+          "address": {
+            "type": "string",
+            "title": "Address",
+            "description": "Only use if Geojson is unavailable"
+          },
+          "city": {
+            "type": "string",
+            "title": "City",
+            "description": "Only use if Geojson is unavailable"
+          },
+          "state": {
+            "type": "string",
+            "title": "State",
+            "description": "Only use if Geojson is unavailable"
+          }
+        }
+      }
+    },
+    "temporal": {
+      "type": "array",
+      "format": "tabs",
+      "title": "Temporal",
+      "description": "Duration of a specific Activity",
+      "uniqueItems": true,
+      "propertyOrder": 12,
+      "items": {
+        "type": "object",
+        "title": "Activity",
+        "headerTemplate": "{{ self.name }},{{ self.milestoneType }}",
+        "properties": {
+          "activityType": {
+            "type": "string",
+            "title": "Activity Type",
+            "descripton": "Discrete Process/Step/Requirement/Phase of a project",
+            "enum": [
+              "options",
+              "provided",
+              "through",
+              "describedBy"
+            ]
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          },
+          "to": {
+            "type": "string",
+            "title": "Date from",
+            "format": "date",
+            "default": "YYYY-MM-DD"
+          },
+          "from": {
+            "type": "string",
+            "title": "Date to",
+            "format": "date",
+            "default": "YYYY-MM-DD"
+          },
+          "estimated": {
+            "type": "string",
+            "title": "Estimated Date",
+            "format": "date",
+            "default": "YYYY-MM-DD"
+          },
+          "modified": {
+            "type": "string",
+            "title": "Date Modified",
+            "format": "date",
+            "default": "YYYY-MM-DDT12:00:00.000Z"
+          },
+          "contactId": {
+            "type": "string",
+            "title": "Point of Contact",
+            "description": "Name@email.gov for person @email.gov for org"
+          },
+          "isPublic": {
+            "type": "boolean",
+            "title": "Public",
+            "format": "checkbox",
+            "default": "true",
+            "description": "Is the activity publically viewable"
+          },
+          "tasks": {
+            "type": "array",
+            "format": "tabs",
+            "title": "Tasks",
+            "description": "Tasks within a Milestone",
+            "uniqueItems": true,
+            "items": {
+              "type": "object",
+              "title": "Tasks",
+              "headerTemplate": "{{ self.name }}",
+              "properties": {
+                "milestoneType": {
+                  "type": "string",
+                  "title": "Task Type",
+                  "enum": [
+                    "options",
+                    "provided",
+                    "through",
+                    "describedBy"
+                  ]
+                },
+                "name": {
+                  "type": "string",
+                  "title": "Name"
+                },
+                "description": {
+                  "type": "string",
+                  "title": "Description"
+                },
+                "to": {
+                  "type": "string",
+                  "title": "Date from",
+                  "format": "date",
+                  "default": "YYYY-MM-DD"
+                },
+                "from": {
+                  "type": "string",
+                  "title": "Date to",
+                  "format": "date",
+                  "default": "YYYY-MM-DD"
+                },
+                "estimated": {
+                  "type": "string",
+                  "title": "Estimated Date",
+                  "format": "date",
+                  "default": "YYYY-MM-DD"
+                },
+                "modified": {
+                  "type": "string",
+                  "title": "Date Modified",
+                  "format": "date",
+                  "default": "YYYY-MM-DDT12:00:00.000Z"
+                },
+                "contactId": {
+                  "type": "string",
+                  "title": "Point of Contact",
+                  "description": "Name@email.gov for person @email.gov for org"
+                },
+                "pause": {
+                  "type": "boolean",
+                  "title": "Pause",
+                  "format": "checkbox",
+                  "default": "false",
+                  "description": "Is the task out of your control/responsibility"
+                },
+                "isPublic": {
+                  "type": "boolean",
+                  "title": "Public",
+                  "format": "checkbox",
+                  "default": "true",
+                  "description": "Is the task publically viewable"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "media": {
+      "type": "array",
+      "format": "table",
+      "title": "Media",
+      "description": "Project Websites, Social Media, Feeds, Images",
+      "uniqueItems": true,
+      "propertyOrder": 13,
+      "items": {
+        "type": "object",
+        "title": "Media",
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "url": {
+            "type": "string",
+            "title": "URL",
+            "description": "Link to Site or File"
+          },
+          "mediaType": {
+            "type": "string",
+            "title": "Media Type",
+            "description": "File or Format",
+            "enum": [
+              "options",
+              "provided",
+              "through",
+              "describedBy"
+            ],
+            "default": ""
+          },
+          "attribution": {
+            "type": "string",
+            "title": "Attribution",
+            "description": "Attribution Credits Rights"
+          }
+        }
+      }
+    },
+    "resources": {
+      "type": "array",
+      "format": "tabs",
+      "title": "Resources",
+      "description": "Optional for Resources, Funds, Materials, Services for the Project",
+      "uniqueItems": true,
+      "propertyOrder": 14,
+      "items": {
+        "type": "object",
+        "title": "Resources",
+        "properties": {
+          "resourceType": {
+            "type": "string",
+            "title": "Resource Type",
+            "description": "List of Resources Categories",
+            "enum": [
+              "options",
+              "provided",
+              "through",
+              "describedBy"
+            ],
+            "default": ""
+          },
+          "email": {
+            "type": "string",
+            "title": "Email",
+            "description": "Use name@email.gov for responsible POC or @email.gov for organization"
+          },
+          "portionOf": {
+            "type": "string",
+            "title": "Portion of",
+            "description": "$ or %"
+          },
+          "ofTotal": {
+            "type": "string",
+            "title": "of Total",
+            "description": "$ or %"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          },
+          "isPublic": {
+            "type": "boolean",
+            "title": "Public",
+            "format": "checkbox",
+            "default": "false",
+            "description": "Is the milestone publically viewable"
+          }
+        }
+      }
+    },
+    "federalData": {
+      "type": "array",
+      "format": "table",
+      "title": "Federal Data",
+      "description": "Federal Data created or used by the project on Data.gov",
+      "uniqueItems": true,
+      "propertyOrder": 15,
+      "items": {
+        "type": "object",
+        "title": "Federal Data",
+        "properties": {
+          "uri": {
+            "type": "string",
+            "title": "URI to Data.gov",
+            "description": "Permenant Link to Dataset on Data.gov"
+          },
+          "created": {
+            "type": "boolean",
+            "title": "Created",
+            "format": "checkbox",
+            "description": "Was data created from the Project"
+          }
+        }
+      }
+    },
+    "data": {
+      "type": "array",
+      "format": "table",
+      "title": "Data",
+      "description": "Non-Federal Data created or used by the project",
+      "uniqueItems": true,
+      "propertyOrder": 16,
+      "items": {
+        "type": "object",
+        "title": "Data",
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "url": {
+            "type": "string",
+            "title": "URL"
+          },
+          "license": {
+            "type": "string",
+            "title": "License",
+            "enum": [
+              "Public Domain CC0",
+              "Creative Commons Share-alike",
+              "Other (use Attribution)"
+            ],
+            "default": "Public Domain CC0"
+          },
+          "attribution": {
+            "type": "string",
+            "title": "Attribution",
+            "description": "Attribution Credits Rights"
+          },
+          "created": {
+            "type": "boolean",
+            "title": "Created",
+            "format": "checkbox",
+            "default": "true",
+            "description": "Was the Data Created or Produced from the Project"
+          }
+        }
+      }
+    },
+    "isPartof": {
+      "type": "array",
+      "format": "table",
+      "title": "Related Projects",
+      "description": "isPartof implies current project is a smaller/subset to a larger project or effort uses UUID",
+      "uniqueItems": true,
+      "propertyOrder": 17,
+      "items": {
+        "type": "object",
+        "title": "Parent Project UUID",
+        "properties": {
+          "parentUUID": {
+            "type": "string",
+            "title": "Parent UUID",
+            "description": "isPartof implies current project is a smaller/subset to a larger project or effort use Parent UUID or URI"
+          }
+        }
+      }
+    },
+    "conformsTo": {
+      "title": "Federal Project Schema",
+      "description": "Human readable documentation on schema does not yet exist - only provided as an example",
+      "type": "string",
+      "propertyOrder": 18,
+      "default": "https://some.website/projects/1.0/schema"
+    },
+    "describedBy": {
+      "title": "describedBy Schema",
+      "description": "Extended from Federal Project Schema but provides values for dropdowns and/or can extended to add additional fields",
+      "type": "string",
+      "propertyOrder": 19,
+      "default": "https://some.website/projects/category/v1.0/schema.json"
+    },
+    "UUID": {
+      "title": "UUID",
+      "description": "UUID are Globally Unique ID used to ensure stablity in referencing and identification of Projects",
+      "type": "string",
+      "format": "uuid",
+      "propertyOrder": 20
+    },
+    "extended": {
+      "type": "array",
+      "format": "table",
+      "title": "Extended",
+      "description": "Custom Fields must be defined in describedBy Schema",
+      "uniqueItems": true,
+      "propertyOrder": 21,
+      "items": {
+        "type": "object",
+        "title": "Extended",
+        "properties": {
+          "additional": {
+            "type": "string",
+            "title": "Additional",
+            "description": "example 1"
+          },
+          "fields": {
+            "type": "string",
+            "title": "Fields",
+            "description": "example 2"
+          }
+        }
+      }
+    }
+  }
+}
